@@ -375,11 +375,11 @@ public class InsGpsActivity extends Activity implements GpsListener.InterfaceGps
         @Override
         protected void onProgressUpdate(Void... values) { // Para correr no UI
             super.onProgressUpdate(values);
-           /*if(gpsReady)
-            {*/
+           if(gpsReady)
+            {
                 insListener.startIns();// Inicio agora o INS
                 dialog.setMessage("A iniciar o INS...");
-          /* }*/
+            }
         }
 
         @Override
@@ -390,9 +390,9 @@ public class InsGpsActivity extends Activity implements GpsListener.InterfaceGps
         }
         @Override
         protected Void doInBackground(Void... msg) {
-          /*  while(!gpsReady)
+            while(!gpsReady)
             {
-            }*/
+            }
             publishProgress(); // Gps pronto, iniciar INS
             while(!insReady)
             {
