@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="ejml-0.19-nogui">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/SMTAImuGps/libs/ejml-0.19-nogui.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

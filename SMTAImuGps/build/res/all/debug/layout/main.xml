@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="fill_parent"
+              android:background="@drawable/bg">
+
+    <ImageView
+            android:layout_width="300dp"
+            android:layout_height="390dp"
+            android:id="@+id/imageView"
+            android:layout_gravity="center"
+            android:src="@drawable/imgstart"
+            android:scaleType="fitXY"
+            android:layout_marginBottom="2dp"
+            android:padding="5dp"/>
+
+
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center_horizontal"
+                android:padding="30dp">
+            <ImageButton
+
+
+                    android:layout_height="70dp"
+                    android:id="@+id/btncalibrar"
+                    android:background="@drawable/btncalibrar"
+                    android:layout_width="70dp"
+                    android:cropToPadding="false"
+                    android:scaleType="center"
+                    android:layout_gravity="bottom"
+                    android:paddingRight="30dp"/>
+
+            <ImageButton
+
+
+                    android:layout_height="70dp"
+                    android:id="@+id/btnconfig"
+                    android:background="@drawable/btnconfig"
+                    android:layout_toRightOf="@+id/btncalibrar"
+                    android:layout_width="70dp"
+                    android:cropToPadding="false"
+                    android:scaleType="center"
+                    android:layout_gravity="bottom"
+                    android:paddingLeft="30dp"/>
+
+            <ImageButton
+                    android:layout_height="70dp"
+                    android:id="@+id/btnstart"
+                    android:background="@drawable/btnstart"
+                    android:layout_toRightOf="@+id/btnstart"
+                    android:layout_width="93dp"
+                    android:cropToPadding="false"
+                    android:scaleType="center"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:paddingLeft="90dp"
+                    />
+        </LinearLayout>
+
+
+</LinearLayout><!-- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/src/main/res/layout/main.xml -->

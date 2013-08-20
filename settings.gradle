@@ -1,0 +1,3 @@
+include ':SMTAImuGps'
+include ':google-play-services_lib'
+

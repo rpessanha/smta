@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Sistema Móvel de Telemetria para Automomóveis</string>
+    <string name="action_settings">Configuração</string>
+    <string name="RotationVector">rotvet</string>
+    <string name="title_activity_ins_calibration">Calibração do acelerómetro</string>
+    <string name="title_activity_insgps">Sistema Móvel de Telemetria para Automomóveis</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_settings">Configuração</string>
+    <string name="OrientationTypeAccMag">accmag</string>
+    <string name="OrientationTypeRotationVector">rotvet</string>
+    <string name="OrientationTypeFusion">fusao</string>
+    <string name="norte">N</string>
+    <string name="este">E</string>
+    <string name="sul">S</string>
+    <string name="oeste">O</string>
+
+</resources>

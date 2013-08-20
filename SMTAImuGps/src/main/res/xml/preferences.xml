@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+            android:summary="INS"
+            android:title="INS configuração">
+        <ListPreference
+                android:defaultValue="0"
+                android:entries="@array/frequencia"
+                android:entryValues="@array/frequenciaValues"
+                android:key="sensorfrequency"
+                android:summary="Escolha a frequência dos sensores pretendida."
+                android:title="Frequência"
+                android:icon="@drawable/icon_frequency"/>
+        <ListPreference
+                android:defaultValue="fusao"
+                android:entries="@array/orientacao"
+                android:entryValues="@array/orientacaoValues"
+                android:key="orientationtype"
+                android:summary="Escolha a forma (sensores) de orientação pretendida."
+                android:title="Orientação"
+                android:icon="@drawable/icon_orientation"/>
+        <PreferenceScreen
+                android:key="button_voicemail_setting_key"
+                android:title="Filtro de ruído"
+                android:persistent="false"
+                android:icon="@drawable/icon_filter"
+                android:summary="Configurar o filtro de ruído para o acelerómetro.">
+            <ListPreference
+                    android:defaultValue="lpf"
+                    android:entries="@array/filtroRuido"
+                    android:entryValues="@array/filtroRuidoValues"
+                    android:key="filtroRuido"
+                    android:summary="Tipo de filtro para redução do ruído dos sinais."
+                    android:title="Filtro ruído"/>
+            <EditTextPreference
+                    android:defaultValue="0.4"
+                    android:key="thresholdLPF"
+
+                    android:summary="Filtro passa baixas - Coeficiente alpha"
+                    android:inputType="numberDecimal"
+                    android:title="Filtro Passa baixas"/>
+
+            <EditTextPreference
+                    android:defaultValue="5"
+                    android:key="thresholdSMA"
+                    android:summary="Filtro média móvel - Número de pontos"
+                    android:title="Filtro média móvel"
+                    android:inputType="number"/>
+            <EditTextPreference
+                    android:defaultValue="0.999"
+                    android:key="thresholdGravityLPF"
+                    android:summary="Filtro passa baixas para determinação da gravidade."
+                    android:title="Filtro gravidade"
+                    android:inputType="numberDecimal"/>
+
+        </PreferenceScreen>
+        <PreferenceScreen
+                android:key="calibracao"
+                android:title="Calibração"
+                android:persistent="false"
+                android:summary="Configurar os valores de calibração."
+                android:icon="@drawable/icon_calibration">
+            <CheckBoxPreference
+                    android:defaultValue="false"
+                    android:key="usaCalibracao"
+                    android:summary="Activa ou desactiva o uso da calibracao na determinação dos valores do acelerómetro."
+                    android:title="Usa valores de calibração."
+                    android:disableDependentsState="false"/>
+
+            <EditTextPreference
+                    android:defaultValue="500"
+                    android:key="thresholdCalibracao"
+                    android:summary="Número de observações para uso na calibração do acelerómetro."
+                    android:title="N. de registos para calibração"
+                    android:inputType="number"
+                    android:dependency="usaCalibracao"/>
+            <EditTextPreference
+                    android:defaultValue="500"
+                    android:key="thresholdComputeVelocity"
+                    android:summary="Número de observações para auxiliar a determinação da média dos limites inferiore e superiores da aceleração para uso no threshold."
+                    android:title="N. de registos para cálculo do threshold"
+                    android:inputType="number"
+                    />
+            <CheckBoxPreference
+                    android:defaultValue="false"
+                    android:key="manualcalibration"
+                    android:summary="Permite ao utilizador alterar os valores de calibração manualmente."
+                    android:title="Calibração manual."
+                    android:disableDependentsState="false"/>
+            <EditTextPreference
+                    android:defaultValue="1.0"
+                    android:key="k_Xeditor"
+                    android:summary="Valor de escala do eixo X."
+                    android:title="Escala eixo X"
+                    android:inputType="numberDecimal"
+                    android:dependency="manualcalibration"/>
+            <EditTextPreference
+                    android:defaultValue="1.0"
+                    android:key="k_Yeditor"
+                    android:summary="Valor de escala do eixo Y."
+                    android:title="Escala eixo Y"
+                    android:inputType="numberDecimal"
+                    android:dependency="manualcalibration"/>
+            <EditTextPreference
+                    android:defaultValue="1.0"
+                    android:key="k_Zeditor"
+                    android:summary="Valor de escala do eixo Z."
+                    android:title="Escala eixo Z"
+                    android:inputType="numberDecimal"
+                    android:dependency="manualcalibration"/>
+            <EditTextPreference
+                    android:defaultValue="0.0"
+                    android:key="b_Xeditor"
+                    android:summary="Valor de bias do eixo X."
+                    android:title="Bias eixo X"
+                    android:inputType="numberDecimal"
+                    android:dependency="manualcalibration"/>
+            <EditTextPreference
+                    android:defaultValue="0.0"
+                    android:key="b_Yeditor"
+                    android:summary="Valor de bias do eixo Y."
+                    android:title="Bias eixo Y"
+                    android:inputType="numberDecimal"
+                    android:dependency="manualcalibration"/>
+            <EditTextPreference
+                    android:defaultValue="0.0"
+                    android:key="b_Zeditor"
+                    android:summary="Valor de bias do eixo Z."
+                    android:title="Bias eixo Z"
+                    android:inputType="numberDecimal"
+                    android:dependency="manualcalibration"/>
+        </PreferenceScreen>
+    </PreferenceCategory>
+    <PreferenceCategory
+            android:summary="GPS/INS Logger"
+            android:title="Opções para log"
+            android:icon="@drawable/icon_sensor">
+        <CheckBoxPreference
+                android:defaultValue="false"
+                android:key="logSensor"
+                android:summary="Quando seleccionar a actividade logging, os valores dos sensores serão gravados."
+                android:title="Log sensores (acelerometro, giroscopio,...)."
+                android:icon="@drawable/icon_sensor"/>
+        <CheckBoxPreference
+                android:defaultValue="false"
+                android:key="logGps"
+                android:summary="Quando seleccionar a actividade logging, os valores do GPS serão gravados."
+                android:title="Log GPS (latitude, longitude, etc...)."
+                android:icon="@drawable/icon_gps"/>
+    </PreferenceCategory>
+    <PreferenceCategory
+            android:summary="Enviar pacotes UDP"
+            android:title="Rede (UDP)">
+        <PreferenceScreen
+                android:key="pacotesudp"
+                android:title="PacotesUDP"
+                android:persistent="false"
+                android:summary="Configurar o envio de pacotes UDP."
+                android:icon="@drawable/icon_wifi">
+        <CheckBoxPreference
+                android:key="udpsend"
+                android:title="Enviar dados por UDP"
+                android:summary="A aplicação pode permitir o envio dos dados dos sensores através de pacotes UDP para, por exemplo, serem capturados e analisados em real time no MATLAB."
+                android:defaultValue="false"/>
+        <EditTextPreference
+                android:title="IP servidor"
+                android:summary="IP do dispositivo de destino."
+                android:inputType="text"
+                android:key="udpip"
+                android:dependency="udpsend"/>
+        <EditTextPreference
+                android:title="Porta"
+                android:summary="Porta do IP de destino"
+                android:inputType="number"
+                android:key="udpporta"
+                android:dependency="udpsend"/>
+        </PreferenceScreen>
+    </PreferenceCategory>
+
+</PreferenceScreen>

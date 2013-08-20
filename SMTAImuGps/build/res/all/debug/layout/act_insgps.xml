@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/mainInsGps"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <ViewSwitcher
+            android:id="@+id/viewSwitcher1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:inAnimation="@android:anim/slide_in_left"
+            android:outAnimation="@android:anim/slide_out_right">
+
+
+        <RelativeLayout
+                android:id="@+id/layoutMapa"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <LinearLayout
+                    android:id="@+id/mapaView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                     >
+
+
+
+                <fragment
+                    android:id="@+id/mapview1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    class="com.google.android.gms.maps.MapFragment"/>
+            </LinearLayout>
+
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="21dp"
+                    android:background="@drawable/bg_gpsins_btns"
+                    android:weightSum = "3">
+
+                <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btngpsinsstart"
+                        android:layout_centerVertical="true"
+                        android:cropToPadding="false"
+                        android:scaleType="center"
+                        android:background="@drawable/btngpsinsstart"
+                        android:layout_gravity="center_horizontal|bottom"
+                        android:layout_weight="1"
+                        android:onClick="onStartClick"
+                        android:visibility="visible"/>
+                <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btngpsinsstop"
+                        android:layout_centerVertical="true"
+                        android:cropToPadding="false"
+                        android:scaleType="center"
+                        android:background="@drawable/btngpsinsstop"
+                        android:layout_gravity="center_horizontal|bottom"
+                        android:layout_weight="1"
+                        android:onClick="onStopClick"
+                        android:visibility="gone"/>
+
+                <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btngpsinsnext"
+                        android:layout_centerVertical="true"
+                        android:cropToPadding="false"
+                        android:scaleType="center"
+                        android:background="@drawable/btngpsinsnext"
+                        android:onClick="onNextScreenClick"
+                        android:layout_gravity="center_horizontal|bottom"
+                        android:layout_weight="1"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+                android:id="@+id/layoutCompassKm"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <LinearLayout
+                    android:id="@+id/CompassKmView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                <mei.tcd.ins.InsOrientationView
+                        android:id="@+id/orientacaoView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_margin="10dp"/>
+                <TextView android:id="@+id/velocidade" android:layout_width="wrap_content"
+                          android:layout_height="wrap_content" android:text="velocidade"
+                          android:layout_marginLeft="30dp" android:layout_marginRight="30dp"
+                          android:layout_gravity="center_horizontal"
+                          android:textAppearance="?android:attr/textAppearanceLarge"
+                          android:textColor="@color/White"/>
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="21dp"
+                    android:background="@drawable/bg_gpsins_btns">
+
+
+                <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btngpsinsprevious"
+                        android:layout_centerVertical="true"
+                        android:cropToPadding="false"
+                        android:scaleType="center"
+                        android:background="@drawable/btngpsinsprevious"
+                        android:layout_gravity="center_horizontal|bottom"
+                        android:layout_weight="1"
+                        android:onClick="onPreviousScreenClick"/>
+
+                <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btngpsinsnext2"
+                        android:layout_centerVertical="true"
+                        android:cropToPadding="false"
+                        android:scaleType="center"
+                        android:background="@drawable/btngpsinsnext"
+                        android:layout_gravity="center_horizontal|bottom"
+                        android:layout_weight="1"/>
+
+            </LinearLayout>
+        </RelativeLayout>
+    </ViewSwitcher>
+</LinearLayout>
+<!-- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/src/main/res/layout/act_insgps.xml -->

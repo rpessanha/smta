@@ -1,0 +1,32 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.5.+'
+    }
+}
+apply plugin: 'android'
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //compile 'com.android.support:support-v4:13.0.+'
+    compile files('libs/android-support-v4.jar')
+    compile files('libs/ejml-0.19-nogui.jar')
+
+    compile project(':google-play-services_lib')
+}
+
+android {
+    compileSdkVersion 17
+    buildToolsVersion "17.0.0"
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 15
+    }
+}
