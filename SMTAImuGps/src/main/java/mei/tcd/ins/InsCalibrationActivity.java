@@ -51,6 +51,7 @@ public class InsCalibrationActivity  extends Activity implements SensorEventList
     ProgressBar progressBar; // Barra de progresso
     ImageButton btn_exit, btn_continue, btn_calibrate; // Botões do interface UI
     SensorManager sensorManager; // Instancia do gestor de sensores
+    private String prefSensorCalibration;
     SharedPreferences preferences; // Instancia das preferencias
     private int progressCounter = 0; // Conta o progresso da calibração de cada eixo
     private boolean startCalibration = false; // Variavel lógica para controlar o inicio da calibração ao clicar o botão
@@ -85,6 +86,7 @@ public class InsCalibrationActivity  extends Activity implements SensorEventList
         calibrationText.setText("A calibrar...");
         progressBar.setVisibility(View.INVISIBLE);
         progressBar.setMax(OBSERVATIONS+OFFSET);
+        prefSensorCalibration = this.preferences.getString("sensorcalibration","sacc");
     }
 
     @Override
@@ -154,7 +156,10 @@ public class InsCalibrationActivity  extends Activity implements SensorEventList
             }
 
         }
-        if(eventType==Sensor.TYPE_GRAVITY) {
+        if(this.prefSensorCalibration.equals("sacc")) {
+            calibrationText.setText("Progresso:" + progressCounter + "\r\nX:" + sensorEvent.values[0] + "\r\n"+"Y:" + sensorEvent.values[1] + "\r\n"+"Z:" + sensorEvent.values[2]);
+        }
+        if(this.prefSensorCalibration.equals("sgrav") && eventType==Sensor.TYPE_GRAVITY) {
             calibrationText.setText("Progresso:" + progressCounter + "\r\nX:" + sensorEvent.values[0] + "\r\n"+"Y:" + sensorEvent.values[1] + "\r\n"+"Z:" + sensorEvent.values[2]);
         }
 

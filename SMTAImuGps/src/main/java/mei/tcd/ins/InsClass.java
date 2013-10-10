@@ -11,18 +11,28 @@ import mei.tcd.util.Operations;
  * Created by pessanha on 02-08-2013.
  */
 public class InsClass {
-    private static final float GYRO_FILTER_COEFFICIENT = 0.98f; //O quanto queremos que os resultados se ajustema este
+    //private static final float GYRO_FILTER_COEFFICIENT = 0.98f; //O quanto queremos que os resultados se ajustema este
     private static final float EPSILON = 0.000000001f;
     private static final float NS2S = 1.0f / 1000000000.0f; // Nanosegundos para segundos
+    private static final float RAD2GRAUS = 57.29578f;
+    private float GYRO_FILTER_COEFFICIENT;
     private DenseMatrix64F mInitialGpsPosition=new DenseMatrix64F(3,1); ///Vem da posi??o auferida pelo GPS(transfoma??o de wgs82->ecef->enu).
     private DenseMatrix64F mPosition=new DenseMatrix64F(3,1); // Vetor posi??o no sistema de coordenadas global (ENU)
     private DenseMatrix64F mInitialGpsVelocity=new DenseMatrix64F(3,1); // Vetor posi??o anterior para medir distancia entre os ultimos pontos
-    private float mVelocityTotal; // Guarda valor da velocidade calculada
+    private float mPositionTotal; // Guarda valor da posição total
+    private float mVelocityTotal; // Guarda valor da velocidade total calculada
     private DenseMatrix64F mAcceleration=new DenseMatrix64F(3,1); // Vetor acelera??o no sistema de coordenadas local (Dispositivo)
     private DenseMatrix64F mVelocityBody=new DenseMatrix64F(3,1); // Vetor acelera??o no sistema de coordenadas local (Dispositivo)
+    private DenseMatrix64F mVelocityBody2=new DenseMatrix64F(3,1); // Vetor acelera??o no sistema de coordenadas local (Dispositivo)
     private DenseMatrix64F m_temp=new DenseMatrix64F(3,1); // array temporario
+    private DenseMatrix64F m_tempCentripeta=new DenseMatrix64F(3,1); // array temporario
     private DenseMatrix64F m_tempdcm=new DenseMatrix64F(3,3); // DCM temporaria
+    private DenseMatrix64F m_tempMatrix=new DenseMatrix64F(3,3);
+    private DenseMatrix64F m_tempResult1=new DenseMatrix64F(3,3);
     private DenseMatrix64F mGravity=new DenseMatrix64F(3,1); // vetor gravidade
+    private DenseMatrix64F mGravityBody=new DenseMatrix64F(3,1); // vetor gravidade no referencial do dispositivo
+    private float[] mGravityVector=new float[]{0,0,0};
+    private DenseMatrix64F mGyro=new DenseMatrix64F(3,1);
     private float[] mCbnRotVet = new float[]{1,0,0,0,1,0,0,0,1}; // mCbnRotVet - Matriz rota??o usada para guardar valores do getrotationmatrix() do VetorRotacao
     private float[] mCbnAccMag = new float[]{1,0,0,0,1,0,0,0,1}; // mCbnAccMag - Matriz rota??o usada para guardar valores do getrotationmatrix() do AccMag
     private float[] mCbnFusion = new float[]{1,0,0,0,1,0,0,0,1}; // mCbnFusion - Matriz rota??o usada para guardar valores do getrotationmatrixFromOrientation(mAprFusao)
@@ -37,8 +47,9 @@ public class InsClass {
     private float[] gyroOrientation = new float[3];// Angulos de orienta??o da matriz girosc?pio (Gyromatrix)
     private float[] gyro = new float[3]; // Guarda as velocidades angulares registadas pelo girosco+io
     private Operations operations;
+    private float velocityCorrection;
 
-    public InsClass()
+    public InsClass(float gyroCoefficient)
     {
         mGravity.set(2,-SensorManager.GRAVITY_EARTH); //{0,0,-g} - Este vector servir? como base para calculo da varia??o do sistema de coordenadas disposito para navega??o
         mAcceleration.zero();
@@ -51,6 +62,8 @@ public class InsClass {
         gyroOrientation[2] = 0.0f;
         mVelocityTotal = 0;
         operations = new Operations();
+        GYRO_FILTER_COEFFICIENT = gyroCoefficient;
+        velocityCorrection = 0;
         //TODO: Inicializar os CBN
     }
     /**
@@ -77,6 +90,10 @@ public class InsClass {
             mAccLinear[i] = (float)m_temp.get(i);
         //return new float[]{(float) m_temp.get(0),(float) m_temp.get(1),(float) m_temp.get(2)};
         return mAccLinear;
+    }
+    public float getPosition()
+    {
+        return this.mPositionTotal;
     }
     public float getVelocity(){
         return mVelocityTotal;
@@ -127,16 +144,63 @@ public class InsClass {
      * @param gravity float de aceleração de gravidade
      * @param dt intervalo de tempo entre registos
      */
-    public void updateVelocity(float[] acc,float[] gravity, float dt)
+    public void updateVelocity(float[] acc,float[] gravity, float dt, boolean withCentripeta)
     {
         mAcceleration.set(0,acc[0]-gravity[0]); //x - Aceleração menos gravidade
         mAcceleration.set(1,acc[1]-gravity[1]); //y - Aceleração menos gravidade
         mAcceleration.set(2,acc[2]-gravity[2]); //z - Aceleração menos gravidade
-        if(acc[1]-gravity[1]>0)
+        this.mVelocityBody.set(0,this.mVelocityBody.get(0)+this.mAcceleration.get(0) * dt);
+        this.mVelocityBody.set(1,this.mVelocityBody.get(1)+this.mAcceleration.get(1) * dt);
+        this.mVelocityBody.set(2,this.mVelocityBody.get(2)+this.mAcceleration.get(2) * dt);
+        float[] arrayOfFloat;
+        if(!withCentripeta)
+        {
+            this.mVelocityTotal = this.velocityCorrection + operations.getMagnitude(new float[] {(float)this.mVelocityBody.get(1),(float)this.mVelocityBody.get(2)});
+
+        }else
+        {
+            this.mVelocityTotal = this.velocityCorrection + operations.getMagnitude(new float[] {(float)this.mVelocityBody.get(0),(float)this.mVelocityBody.get(1),(float)this.mVelocityBody.get(2)});
+        }
+        updatePosition(dt);
+
+        /*if(acc[1]-gravity[1]>0)
             mVelocityTotal = mVelocityTotal + (operations.getMagnitude(getFloatFromDenseMatrix(mAcceleration))*dt);
         if(acc[1]-gravity[1]<0)
-            mVelocityTotal = mVelocityTotal - (operations.getMagnitude(getFloatFromDenseMatrix(mAcceleration))*dt);
+            mVelocityTotal = mVelocityTotal - (operations.getMagnitude(getFloatFromDenseMatrix(mAcceleration))*dt);*/
 
+    }
+    public void updateVelocityGyro(float[] gyro, float dt)
+    {
+        this.mGyro.set(0, gyro[0]);
+        this.mGyro.set(1, gyro[1]);
+        this.mGyro.set(2, gyro[2]);
+        this.m_tempMatrix = getAntiSimetrica(this.mVelocityBody);
+        CommonOps.multAdd(dt,this.m_tempMatrix, this.mGyro, this.mVelocityBody);
+        updatePosition(dt);
+    }
+    public void updateVelocityGyroRotation(float[] gyro, float dt){
+        this.mGyro.set(0, gyro[0]);
+        this.mGyro.set(1, gyro[1]);
+        this.mGyro.set(2, gyro[2]);
+        this.m_tempMatrix = getAntiSimetrica(this.mVelocityBody);
+        CommonOps.multAdd(dt,this.m_tempMatrix, this.mGyro, this.mVelocityBody);
+        this.mVelocityTotal = this.velocityCorrection + operations.getMagnitude(new float[] {(float)this.mVelocityBody.get(1),(float)this.mVelocityBody.get(2)});
+        updatePosition(dt);
+    }
+    public void updateVelocityRotation(float[] acc, float dt){
+        mAcceleration.set(0,acc[0]); //x - Aceleração
+        mAcceleration.set(1,acc[1]); //y - Aceleração
+        mAcceleration.set(2,acc[2]); //z - Aceleração
+        for(int i=0;i<9;i++)
+            this.m_tempdcm.set(i,this.mCbn[i]);
+        CommonOps.multAddTransA(this.m_tempdcm,this.mGravity,this.mAcceleration);
+        CommonOps.addEquals(this.mVelocityBody,dt, this.mAcceleration);
+        this.mVelocityTotal = this.velocityCorrection + operations.getMagnitude(new float[] {(float)this.mVelocityBody.get(1),(float)this.mVelocityBody.get(2)});
+        updatePosition(dt);
+    }
+    public void updatePosition(float paramFloat)
+    {
+        this.mPositionTotal += paramFloat * this.mVelocityTotal;
     }
     /**
      * Actualiza o Azimuth, pitch e roll de acordo com o getrotationmatrix() e Acc+Mag
@@ -371,4 +435,65 @@ public class InsClass {
             retval[i]=(float)vetor.get(i);
         return retval;
     }
+    /**
+     * Constroi a matriz antisimétrica cujo A-1=A_T de um vetor 3x1 para facilitar o calculo com matrizes
+     *
+     * @param vetor
+     * @return DenseMatrix64F
+     */
+    private DenseMatrix64F  getAntiSimetrica(DenseMatrix64F vetor) {
+        DenseMatrix64F tempAntisimetrica=new DenseMatrix64F(3,3);
+        tempAntisimetrica.zero();
+        tempAntisimetrica.set(0,1,-vetor.get(2));
+        tempAntisimetrica.set(0,2,vetor.get(1));
+        tempAntisimetrica.set(1,0,vetor.get(2));
+        tempAntisimetrica.set(1,2,-vetor.get(0));
+        tempAntisimetrica.set(2,0,-vetor.get(1));
+        tempAntisimetrica.set(2,1,vetor.get(0));
+        return tempAntisimetrica;
+    }
+    public float[] getGravityFromRotationMatrix()
+    {
+        for(int i=0; i<9;i++)
+            this.m_tempdcm.set(i,this.mCbn[i]);
+        CommonOps.multAddTransA(this.m_tempdcm,this.mGravity,this.mGravityBody);
+        for(int j=0;j<3;j++)
+            this.mGravityVector[j]=(float)(-this.mGravityBody.get(j));
+        return this.mGravityVector;
+    }
+    public void rotx(float[] vec, float dx)
+    {
+
+        float y = vec[1];
+        float z = vec[2];
+        vec[1] = (y * (float)Math.cos(dx) - z * (float)Math.sin(dx));
+        vec[2] = (y * (float)Math.sin(dx) + z * (float)Math.cos(dx));
+    }
+    public void roty(float[] vec, float dy)
+    {
+
+        float x = vec[0];
+        float z = vec[2];
+        vec[2] = (z * (float)Math.cos(dy) - x * (float)Math.sin(dy));
+        vec[0] = (z * (float)Math.sin(dy) + x * (float)Math.cos(dy));
+    }
+    public void rotz(float[] vec, float dz)
+    {
+
+        float x = vec[0];
+        float y = vec[1];
+        vec[0] = (x * (float)Math.cos(dz) - y * (float)Math.sin(dz));
+        vec[1] = (x * (float)Math.sin(dz) + y * (float)Math.cos(dz));
+    }
+public void setInitialVelocityFromFilteredGps(float paramFloat)
+{
+    this.velocityCorrection = paramFloat - this.mVelocityTotal;
+    this.mPositionTotal = 0.0f;
+    if(paramFloat == 0.0f)
+    {
+        this.velocityCorrection = 0.0f;
+        this.mVelocityBody.zero();
+    }
+}
+
 }

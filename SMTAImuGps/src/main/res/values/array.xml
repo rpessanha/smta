@@ -1,44 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <resources>
-
+    <string-array name="filtroRuido">
+        <item>Low Pass Filter</item>
+        <item>Média Móvel</item>
+    </string-array>
+    <string-array name="filtroRuidoValues">
+        <item>lpf</item>
+        <item>mv</item>
+    </string-array>
+    <string-array name="filtrogravidade">
+        <item>Low Pass Filter</item>
+        <item>Sensor Giroscópio</item>
+        <item>Matriz de rotação</item>
+    </string-array>
+    <string-array name="filtrogravidadeValues">
+        <item>fglpf</item>
+        <item>fggir</item>
+        <item>fgmrot</item>
+    </string-array>
     <string-array name="frequencia">
         <item>Delay Fastest</item>
         <item>Delay Game</item>
         <item>Delay Normal</item>
         <item>Delay UI</item>
     </string-array>
-
     <string-array name="frequenciaValues">
         <item>0</item>
         <item>1</item>
         <item>3</item>
         <item>2</item>
     </string-array>
-
-    <string-array name="filtroRuido">
-        <item>Low Pass Filter</item>
-        <item>Média Móvel</item>
-    </string-array>
-
-    <string-array name="filtroRuidoValues">
-        <item>lpf</item>
-        <item>mv</item>
-    </string-array>
-
     <string-array name="orientacao">
         <item>Acc + Mag</item>
         <item>Rotation Vector</item>
         <item>Fusão Acc+Mag+Gyro</item>
     </string-array>
-
     <string-array name="orientacaoValues">
         <item>accmag</item>
         <item>rotvet</item>
         <item>fusao</item>
     </string-array>
-
-
-
-
+    <string-array name="sensorcalibration">
+        <item>Sensor Acelerómetro</item>
+        <item>Sensor virtual Gravidade</item>
+    </string-array>
+    <string-array name="sensorcalibrationValues">
+        <item>sacc</item>
+        <item>sgrav</item>
+    </string-array>
 </resources>

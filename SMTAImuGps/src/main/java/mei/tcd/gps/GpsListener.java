@@ -23,7 +23,11 @@ import mei.tcd.util.SensorWriterSmta;
 public class GpsListener  implements LocationListener, GpsStatus.Listener  {
     private static final long MINIMAL_DISTANCE_BETWEEN_UPDATES = 0; // Em metros
     private static final long MINIMAL_TIME_BETWEEN_UPDATES = 0; // Em milisegundos
+
     private ArrayList<GpsSatellite> arraySatelites = new ArrayList<GpsSatellite>();// Arrays de envio de informa??o satelite (GpsSatellite - representa o estado atual de um satelite
+
+    private boolean gpsEnabled = false;
+
     private LocationManager locationManager;// Location Manager providencia acesso aos servi?os de localiza??o
     private InterfaceGps iGps; // Instancia o interface nested nesta classe
     private boolean prefLogGps; // Efetuar log do GPS ou n?o
@@ -52,7 +56,6 @@ public class GpsListener  implements LocationListener, GpsStatus.Listener  {
         startSaving=  false;
         preferences = PreferenceManager.getDefaultSharedPreferences(context); //instancio as preferencias de modo static , sem new()
     }
-
 
     /**
      * Inicia o GPS com requisi??es efetuadas ao LocationManager usando um namedProvier e um PendingIntent (this)
@@ -90,10 +93,20 @@ public class GpsListener  implements LocationListener, GpsStatus.Listener  {
     {
         locationManager.removeUpdates(this); // Deixam de existir atualiza??es
         locationManager.removeGpsStatusListener(this); // Remove GPS listener
+        this.gpsEnabled = false;
     }
     public boolean isGpsEnabled()
     {
         if ( !locationManager.isProviderEnabled( LocationManager.GPS_PROVIDER ) ) {
+            return false;
+        }else
+        {
+            return true;
+        }
+    }
+    public boolean isGpsStarted()
+    {
+        if ( !this.gpsEnabled ) {
             return false;
         }else
         {
@@ -105,10 +118,13 @@ public class GpsListener  implements LocationListener, GpsStatus.Listener  {
         GpsStatus gpsStatus = locationManager.getGpsStatus(null); // Representa o estado atual do satelite
         switch (event) {
             case GpsStatus.GPS_EVENT_FIRST_FIX: // Primeiro fix desde que come?ou
+                this.iGps.onGpsStatusChanged(event);
                 break;
             case GpsStatus.GPS_EVENT_STARTED: // Quando o GPS come?a
+                this.gpsEnabled = true;
                 break;
             case GpsStatus.GPS_EVENT_STOPPED: // Quando o GPS acabou
+                this.gpsEnabled = false;
                 break;
             case GpsStatus.GPS_EVENT_SATELLITE_STATUS:
                 Iterable<GpsSatellite>satellites = gpsStatus.getSatellites();
@@ -120,6 +136,7 @@ public class GpsListener  implements LocationListener, GpsStatus.Listener  {
                     arraySatelites.add(satellite);
                 }
                 this.iGps.sateliteStatus(arraySatelites); // Guarda o estado num array para ser enviado pelo callback
+                break;
         }
         this.iGps.onGpsStatusChanged(event); // Callback com o estado
     }

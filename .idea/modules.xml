@@ -3,8 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/SMTAImuGps/SMTAImuGps.iml" filepath="$PROJECT_DIR$/SMTAImuGps/SMTAImuGps.iml" />
-      <module fileurl="file://$PROJECT_DIR$/SMTAImuGpsProject.iml" filepath="$PROJECT_DIR$/SMTAImuGpsProject.iml" />
       <module fileurl="file://$PROJECT_DIR$/google-play-services_lib/google-play-services_lib.iml" filepath="$PROJECT_DIR$/google-play-services_lib/google-play-services_lib.iml" />
+      <module fileurl="file://$USER_HOME$/pessanha.iml" filepath="$USER_HOME$/pessanha.iml" />
+      <module fileurl="file://$PROJECT_DIR$/smta.iml" filepath="$PROJECT_DIR$/smta.iml" />
     </modules>
   </component>
 </project>

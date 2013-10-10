@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
 
-    <!-- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-am/values.xml -->
+    <!-- From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-am/values.xml -->
     <string name="auth_client_needs_enabling_title" msgid="3983201110833868073">"መተግበሪያው Google Play አገልግሎቶች እንዲነቁ ይፈልጋል።"</string>
     <string name="auth_client_needs_installation_title" msgid="7999585836145154206">"መተግበሪያው Google Play አገልግሎቶች እንዲጫኑ ይፈልጋል።"</string>
     <string name="auth_client_needs_update_title" msgid="6488605506794595966">"መተግበሪያው Google Play አገልግሎቶች እንዲዘምን ይፈልጋል።"</string>

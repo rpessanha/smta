@@ -14,27 +14,27 @@ public class MovingAverage {
     private double average = 0;
 
     /**
-     * M?todo construtor
+     * Método construtor
      *
-     * @param length n?mero de pontos
+     * @param length_ número de pontos
      */
-    public MovingAverage(int length)
+    public MovingAverage(int length_)
     {
-        if (length <= 0)
+        if (length_ <= 0)
         {
-            throw new IllegalArgumentException("Tamanho dever? ser maior que zero");
+            throw new IllegalArgumentException("Tamanho deverá ser maior que zero");
         }
-        this.length = length;
+        this.length = length_;
     }
 
     /**
-     * Retorna a m?dia atual
+     * Retorna a média atual
      *
      * @return average
      */
     public double currentAverage()
     {
-        return average;
+        return this.average;
     }
 
     /**
@@ -48,12 +48,12 @@ public class MovingAverage {
     {
         if (values.size() == length && length > 0)
         {
-            sum -= ((Double) values.getFirst()).doubleValue();
+            this.sum -= ((Double) values.getFirst()).doubleValue();
             values.removeFirst();
         }
-        sum += value;
+        this.sum += value;
         values.addLast(new Double(value));
-        average = sum / values.size();
-        return average;
+        this.average = this.sum / values.size();
+        return this.average;
     }
 }

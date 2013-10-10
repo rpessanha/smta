@@ -129,7 +129,7 @@ containing a value of this type.
         public static int zOrderOnTop=0x7f01000d;
     }
     public static final class color {
-        /**  From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values/colors.xml 
+        /**  From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values/colors.xml 
          */
         public static int common_action_bar_splitter=0x7f030000;
         public static int common_signin_btn_dark_text_default=0x7f030001;
@@ -178,56 +178,56 @@ containing a value of this type.
         public static int terrain=0x7f040003;
     }
     public static final class string {
-        /**  From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values/strings.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values-af/strings.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values-am/strings.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values-ar/strings.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values-be/strings.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values-bg/strings.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values-ca/strings.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values-cs/strings.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values-da/strings.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values-de/strings.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values-el/strings.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values-en-rGB/strings.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values-es/strings.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values-es-rUS/strings.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values-et/strings.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values-fa/strings.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values-fi/strings.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values-fr/strings.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values-hi/strings.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values-hr/strings.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values-hu/strings.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values-in/strings.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values-it/strings.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values-iw/strings.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values-ja/strings.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values-ko/strings.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values-lt/strings.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values-lv/strings.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values-ms/strings.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values-nb/strings.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values-nl/strings.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values-pl/strings.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values-pt/strings.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values-pt-rBR/strings.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values-pt-rPT/strings.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values-ro/strings.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values-ru/strings.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values-sk/strings.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values-sl/strings.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values-sr/strings.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values-sv/strings.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values-sw/strings.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values-th/strings.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values-tl/strings.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values-tr/strings.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values-uk/strings.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values-vi/strings.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values-zh-rCN/strings.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values-zh-rTW/strings.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values-zu/strings.xml 
+        /**  From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values/strings.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values-af/strings.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values-am/strings.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values-ar/strings.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values-be/strings.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values-bg/strings.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values-ca/strings.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values-cs/strings.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values-da/strings.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values-de/strings.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values-el/strings.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values-en-rGB/strings.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values-es/strings.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values-es-rUS/strings.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values-et/strings.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values-fa/strings.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values-fi/strings.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values-fr/strings.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values-hi/strings.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values-hr/strings.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values-hu/strings.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values-in/strings.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values-it/strings.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values-iw/strings.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values-ja/strings.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values-ko/strings.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values-lt/strings.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values-lv/strings.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values-ms/strings.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values-nb/strings.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values-nl/strings.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values-pl/strings.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values-pt/strings.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values-pt-rBR/strings.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values-pt-rPT/strings.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values-ro/strings.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values-ru/strings.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values-sk/strings.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values-sl/strings.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values-sr/strings.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values-sv/strings.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values-sw/strings.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values-th/strings.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values-tl/strings.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values-tr/strings.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values-uk/strings.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values-vi/strings.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values-zh-rCN/strings.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values-zh-rTW/strings.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values-zu/strings.xml 
          */
         public static int auth_client_needs_enabling_title=0x7f050000;
         public static int auth_client_needs_installation_title=0x7f050001;
@@ -252,7 +252,7 @@ containing a value of this type.
         public static int common_signin_button_text_long=0x7f050014;
     }
     public static final class styleable {
-        /**  From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/google-play-services_lib/res/values/maps_attrs.xml 
+        /**  From: file:/C:/Users/pessanha/Android%20studioProjects/smta/google-play-services_lib/res/values/maps_attrs.xml 
            <p>Includes the following attributes:</p>
            <table>
            <colgroup align="left" />

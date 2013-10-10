@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_focused="true"  android:drawable="@drawable/btn_gpsinsstop" />
-    <item  android:state_pressed="true" android:drawable="@drawable/btn_gpsinsstop_hover" />
-
+<selector
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_focused="true" android:drawable="@drawable/btn_gpsinsstop" />
+    <item android:state_pressed="true" android:drawable="@drawable/btn_gpsinsstop_hover" />
     <item android:drawable="@drawable/btn_gpsinsstop" />
-</selector><!-- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/src/main/res/drawable-mdpi/btngpsinsstop.xml -->
+</selector><!-- From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/src/main/res/drawable-mdpi/btngpsinsstop.xml -->

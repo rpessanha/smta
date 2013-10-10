@@ -9,14 +9,18 @@ package mei.tcd.smta;
 
 public final class R {
     public static final class array {
-        /**  From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/src/main/res/values/array.xml 
+        /**  From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/src/main/res/values/array.xml 
          */
         public static final int filtroRuido=0x7f050000;
         public static final int filtroRuidoValues=0x7f050001;
-        public static final int frequencia=0x7f050002;
-        public static final int frequenciaValues=0x7f050003;
-        public static final int orientacao=0x7f050004;
-        public static final int orientacaoValues=0x7f050005;
+        public static final int filtrogravidade=0x7f050002;
+        public static final int filtrogravidadeValues=0x7f050003;
+        public static final int frequencia=0x7f050004;
+        public static final int frequenciaValues=0x7f050005;
+        public static final int orientacao=0x7f050006;
+        public static final int orientacaoValues=0x7f050007;
+        public static final int sensorcalibration=0x7f050008;
+        public static final int sensorcalibrationValues=0x7f050009;
     }
     public static final class attr {
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
@@ -147,7 +151,7 @@ containing a value of this type.
         public static final int zOrderOnTop=0x7f01000f;
     }
     public static final class color {
-        /**  From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/src/main/res/values/colors.xml 
+        /**  From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/src/main/res/values/colors.xml 
          */
         public static final int Black=0x7f060000;
         public static final int DarkGrey=0x7f060001;
@@ -158,7 +162,7 @@ containing a value of this type.
         public static final int black_overlay=0x7f060006;
         public static final int circulos_grandes=0x7f060007;
         public static final int circulos_pequenos=0x7f060008;
-        /**  From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values/values.xml 
+        /**  From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values/values.xml 
          */
         public static final int common_action_bar_splitter=0x7f060009;
         public static final int common_signin_btn_dark_text_default=0x7f06000a;
@@ -172,15 +176,15 @@ containing a value of this type.
         public static final int common_signin_btn_light_text_pressed=0x7f060012;
         public static final int common_signin_btn_text_dark=0x7f060016;
         public static final int common_signin_btn_text_light=0x7f060017;
-        /**  From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/src/main/res/values/colors.xml 
+        /**  From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/src/main/res/values/colors.xml 
          */
         public static final int marcas=0x7f060013;
         public static final int pitch_roll=0x7f060014;
         public static final int text_color=0x7f060015;
     }
     public static final class dimen {
-        /**  From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/src/main/res/values/dimens.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/src/main/res/values-sw720dp-land/dimens.xml 
+        /**  From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/src/main/res/values/dimens.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/src/main/res/values-sw720dp-land/dimens.xml 
          */
         public static final int activity_horizontal_margin=0x7f080000;
         public static final int activity_vertical_margin=0x7f080001;
@@ -189,68 +193,80 @@ containing a value of this type.
         public static final int bg=0x7f020000;
         public static final int bg_calibracao=0x7f020001;
         public static final int bg_gpsins_btns=0x7f020002;
-        public static final int btn_calibrar=0x7f020003;
-        public static final int btn_calibrar_shadow=0x7f020004;
-        public static final int btn_config=0x7f020005;
-        public static final int btn_config_shadow=0x7f020006;
-        public static final int btn_exit=0x7f020007;
-        public static final int btn_exit_shadow=0x7f020008;
-        public static final int btn_gpsinsnext=0x7f020009;
-        public static final int btn_gpsinsnext_hover=0x7f02000a;
-        public static final int btn_gpsinsprevious=0x7f02000b;
-        public static final int btn_gpsinsprevious_hover=0x7f02000c;
-        public static final int btn_gpsinsstart=0x7f02000d;
-        public static final int btn_gpsinsstart_hover=0x7f02000e;
-        public static final int btn_gpsinsstop=0x7f02000f;
-        public static final int btn_gpsinsstop_hover=0x7f020010;
-        public static final int btn_start=0x7f020011;
-        public static final int btn_start_shadow=0x7f020012;
-        public static final int btncalibrar=0x7f020013;
-        public static final int btnconfig=0x7f020014;
-        public static final int btnexit=0x7f020015;
-        public static final int btngpsinsnext=0x7f020016;
-        public static final int btngpsinsprevious=0x7f020017;
-        public static final int btngpsinsstart=0x7f020018;
-        public static final int btngpsinsstop=0x7f020019;
-        public static final int btnstart=0x7f02001a;
-        public static final int common_signin_btn_icon_dark=0x7f02001b;
-        public static final int common_signin_btn_icon_disabled_dark=0x7f02001c;
-        public static final int common_signin_btn_icon_disabled_focus_dark=0x7f02001d;
-        public static final int common_signin_btn_icon_disabled_focus_light=0x7f02001e;
-        public static final int common_signin_btn_icon_disabled_light=0x7f02001f;
-        public static final int common_signin_btn_icon_focus_dark=0x7f020020;
-        public static final int common_signin_btn_icon_focus_light=0x7f020021;
-        public static final int common_signin_btn_icon_light=0x7f020022;
-        public static final int common_signin_btn_icon_normal_dark=0x7f020023;
-        public static final int common_signin_btn_icon_normal_light=0x7f020024;
-        public static final int common_signin_btn_icon_pressed_dark=0x7f020025;
-        public static final int common_signin_btn_icon_pressed_light=0x7f020026;
-        public static final int common_signin_btn_text_dark=0x7f020027;
-        public static final int common_signin_btn_text_disabled_dark=0x7f020028;
-        public static final int common_signin_btn_text_disabled_focus_dark=0x7f020029;
-        public static final int common_signin_btn_text_disabled_focus_light=0x7f02002a;
-        public static final int common_signin_btn_text_disabled_light=0x7f02002b;
-        public static final int common_signin_btn_text_focus_dark=0x7f02002c;
-        public static final int common_signin_btn_text_focus_light=0x7f02002d;
-        public static final int common_signin_btn_text_light=0x7f02002e;
-        public static final int common_signin_btn_text_normal_dark=0x7f02002f;
-        public static final int common_signin_btn_text_normal_light=0x7f020030;
-        public static final int common_signin_btn_text_pressed_dark=0x7f020031;
-        public static final int common_signin_btn_text_pressed_light=0x7f020032;
-        public static final int ic_launcher=0x7f020033;
-        public static final int icon_calibration=0x7f020034;
-        public static final int icon_filter=0x7f020035;
-        public static final int icon_frequency=0x7f020036;
-        public static final int icon_gps=0x7f020037;
-        public static final int icon_orientation=0x7f020038;
-        public static final int icon_sensor=0x7f020039;
-        public static final int icon_wifi=0x7f02003a;
-        public static final int imgstart=0x7f02003b;
-        public static final int map_compass_ico=0x7f02003c;
-        public static final int title_calibration=0x7f02003d;
-        public static final int title_settings=0x7f02003e;
-        public static final int titlewave_reduce_amplitude=0x7f02003f;
-        public static final int warning_android_pitch=0x7f020040;
+        public static final int bg_vs2=0x7f020003;
+        public static final int btn_calibrar=0x7f020004;
+        public static final int btn_calibrar_shadow=0x7f020005;
+        public static final int btn_config=0x7f020006;
+        public static final int btn_config_shadow=0x7f020007;
+        public static final int btn_exit=0x7f020008;
+        public static final int btn_exit_shadow=0x7f020009;
+        public static final int btn_gpsinsnext=0x7f02000a;
+        public static final int btn_gpsinsnext_hover=0x7f02000b;
+        public static final int btn_gpsinsprevious=0x7f02000c;
+        public static final int btn_gpsinsprevious_hover=0x7f02000d;
+        public static final int btn_gpsinsstart=0x7f02000e;
+        public static final int btn_gpsinsstart_hover=0x7f02000f;
+        public static final int btn_gpsinsstartgps=0x7f020010;
+        public static final int btn_gpsinsstartgps_hover=0x7f020011;
+        public static final int btn_gpsinsstop=0x7f020012;
+        public static final int btn_gpsinsstop_hover=0x7f020013;
+        public static final int btn_gpsinsstopgps=0x7f020014;
+        public static final int btn_gpsinsstopgps_hover=0x7f020015;
+        public static final int btn_start=0x7f020016;
+        public static final int btn_start_shadow=0x7f020017;
+        public static final int btncalibrar=0x7f020018;
+        public static final int btnconfig=0x7f020019;
+        public static final int btnexit=0x7f02001a;
+        public static final int btngpsinsnext=0x7f02001b;
+        public static final int btngpsinsprevious=0x7f02001c;
+        public static final int btngpsinsstart=0x7f02001d;
+        public static final int btngpsinsstartgps=0x7f02001e;
+        public static final int btngpsinsstop=0x7f02001f;
+        public static final int btngpsinsstopgps=0x7f020020;
+        public static final int btnstart=0x7f020021;
+        public static final int common_signin_btn_icon_dark=0x7f020022;
+        public static final int common_signin_btn_icon_disabled_dark=0x7f020023;
+        public static final int common_signin_btn_icon_disabled_focus_dark=0x7f020024;
+        public static final int common_signin_btn_icon_disabled_focus_light=0x7f020025;
+        public static final int common_signin_btn_icon_disabled_light=0x7f020026;
+        public static final int common_signin_btn_icon_focus_dark=0x7f020027;
+        public static final int common_signin_btn_icon_focus_light=0x7f020028;
+        public static final int common_signin_btn_icon_light=0x7f020029;
+        public static final int common_signin_btn_icon_normal_dark=0x7f02002a;
+        public static final int common_signin_btn_icon_normal_light=0x7f02002b;
+        public static final int common_signin_btn_icon_pressed_dark=0x7f02002c;
+        public static final int common_signin_btn_icon_pressed_light=0x7f02002d;
+        public static final int common_signin_btn_text_dark=0x7f02002e;
+        public static final int common_signin_btn_text_disabled_dark=0x7f02002f;
+        public static final int common_signin_btn_text_disabled_focus_dark=0x7f020030;
+        public static final int common_signin_btn_text_disabled_focus_light=0x7f020031;
+        public static final int common_signin_btn_text_disabled_light=0x7f020032;
+        public static final int common_signin_btn_text_focus_dark=0x7f020033;
+        public static final int common_signin_btn_text_focus_light=0x7f020034;
+        public static final int common_signin_btn_text_light=0x7f020035;
+        public static final int common_signin_btn_text_normal_dark=0x7f020036;
+        public static final int common_signin_btn_text_normal_light=0x7f020037;
+        public static final int common_signin_btn_text_pressed_dark=0x7f020038;
+        public static final int common_signin_btn_text_pressed_light=0x7f020039;
+        public static final int ic_launcher=0x7f02003a;
+        public static final int icon_calibration=0x7f02003b;
+        public static final int icon_filter=0x7f02003c;
+        public static final int icon_frequency=0x7f02003d;
+        public static final int icon_gps=0x7f02003e;
+        public static final int icon_gravity=0x7f02003f;
+        public static final int icon_kml=0x7f020040;
+        public static final int icon_map=0x7f020041;
+        public static final int icon_orientation=0x7f020042;
+        public static final int icon_sensor=0x7f020043;
+        public static final int icon_stop=0x7f020044;
+        public static final int icon_wifi=0x7f020045;
+        public static final int imgstart=0x7f020046;
+        public static final int map_compass_ico=0x7f020047;
+        public static final int navigation_arrow=0x7f020048;
+        public static final int title_calibration=0x7f020049;
+        public static final int title_settings=0x7f02004a;
+        public static final int titlewave_reduce_amplitude=0x7f02004b;
+        public static final int warning_android_pitch=0x7f02004c;
     }
     public static final class id {
         public static final int CompassKmView=0x7f070015;
@@ -298,7 +314,7 @@ containing a value of this type.
         public static final int settings=0x7f0b0001;
     }
     public static final class string {
-        /**  From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/src/main/res/values/strings.xml 
+        /**  From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/src/main/res/values/strings.xml 
          */
         public static final int OrientationTypeAccMag=0x7f090000;
         public static final int OrientationTypeFusion=0x7f090001;
@@ -306,56 +322,56 @@ containing a value of this type.
         public static final int RotationVector=0x7f090003;
         public static final int action_settings=0x7f090004;
         public static final int app_name=0x7f090005;
-        /**  From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values/values.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-af/values.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-am/values.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-ar/values.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-be/values.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-bg/values.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-ca/values.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-cs/values.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-da/values.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-de/values.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-el/values.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-en-rGB/values.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-es/values.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-es-rUS/values.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-et/values.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-fa/values.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-fi/values.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-fr/values.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-hi/values.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-hr/values.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-hu/values.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-in/values.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-it/values.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-iw/values.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-ja/values.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-ko/values.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-lt/values.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-lv/values.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-ms/values.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-nb/values.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-nl/values.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-pl/values.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-pt/values.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-pt-rBR/values.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-pt-rPT/values.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-ro/values.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-ru/values.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-sk/values.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-sl/values.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-sr/values.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-sv/values.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-sw/values.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-th/values.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-tl/values.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-tr/values.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-uk/values.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-vi/values.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-zh-rCN/values.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-zh-rTW/values.xml 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values-zu/values.xml 
+        /**  From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values/values.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-af/values.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-am/values.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-ar/values.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-be/values.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-bg/values.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-ca/values.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-cs/values.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-da/values.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-de/values.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-el/values.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-en-rGB/values.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-es/values.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-es-rUS/values.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-et/values.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-fa/values.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-fi/values.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-fr/values.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-hi/values.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-hr/values.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-hu/values.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-in/values.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-it/values.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-iw/values.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-ja/values.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-ko/values.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-lt/values.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-lv/values.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-ms/values.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-nb/values.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-nl/values.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-pl/values.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-pt/values.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-pt-rBR/values.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-pt-rPT/values.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-ro/values.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-ru/values.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-sk/values.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-sl/values.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-sr/values.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-sv/values.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-sw/values.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-th/values.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-tl/values.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-tr/values.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-uk/values.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-vi/values.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-zh-rCN/values.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-zh-rTW/values.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values-zu/values.xml 
          */
         public static final int auth_client_needs_enabling_title=0x7f090006;
         public static final int auth_client_needs_installation_title=0x7f090007;
@@ -378,7 +394,7 @@ containing a value of this type.
         public static final int common_google_play_services_update_title=0x7f090018;
         public static final int common_signin_button_text=0x7f090019;
         public static final int common_signin_button_text_long=0x7f09001a;
-        /**  From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/src/main/res/values/strings.xml 
+        /**  From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/src/main/res/values/strings.xml 
          */
         public static final int dummy_button=0x7f09001b;
         public static final int dummy_content=0x7f09001c;
@@ -391,15 +407,15 @@ containing a value of this type.
         public static final int title_activity_settings=0x7f090023;
     }
     public static final class style {
-        /**  From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/src/main/res/values/styles.xml 
+        /**  From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/src/main/res/values/styles.xml 
 
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
         
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/src/main/res/values-v11/styles.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/src/main/res/values-v11/styles.xml 
  API 11 theme customizations can go here. 
- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/src/main/res/values-v14/styles.xml 
+ From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/src/main/res/values-v14/styles.xml 
  API 14 theme customizations can go here. 
          */
         public static final int AppBaseTheme=0x7f0a0000;
@@ -414,7 +430,7 @@ containing a value of this type.
         public static final int preferences=0x7f040000;
     }
     public static final class styleable {
-        /**  From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/src/main/res/values/attrs.xml 
+        /**  From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/src/main/res/values/attrs.xml 
            <p>Includes the following attributes:</p>
            <table>
            <colgroup align="left" />
@@ -449,7 +465,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           @attr name android:buttonBarStyle
         */
         public static final int ButtonBarContainerTheme_buttonBarStyle = 0;
-        /**  From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values/values.xml 
+        /**  From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values/values.xml 
            <p>Includes the following attributes:</p>
            <table>
            <colgroup align="left" />

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
 
-    <!-- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/src/main/res/values/array.xml -->
+    <!-- From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/src/main/res/values/array.xml -->
     <string-array name="filtroRuido">
         <item>Low Pass Filter</item>
         <item>Média Móvel</item>
@@ -9,6 +9,16 @@
     <string-array name="filtroRuidoValues">
         <item>lpf</item>
         <item>mv</item>
+    </string-array>
+    <string-array name="filtrogravidade">
+        <item>Low Pass Filter</item>
+        <item>Sensor Giroscópio</item>
+        <item>Matriz de rotação</item>
+    </string-array>
+    <string-array name="filtrogravidadeValues">
+        <item>fglpf</item>
+        <item>fggir</item>
+        <item>fgmrot</item>
     </string-array>
     <string-array name="frequencia">
         <item>Delay Fastest</item>
@@ -32,7 +42,15 @@
         <item>rotvet</item>
         <item>fusao</item>
     </string-array>
-    <!-- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/src/main/res/values/colors.xml -->
+    <string-array name="sensorcalibration">
+        <item>Sensor Acelerómetro</item>
+        <item>Sensor virtual Gravidade</item>
+    </string-array>
+    <string-array name="sensorcalibrationValues">
+        <item>sacc</item>
+        <item>sgrav</item>
+    </string-array>
+    <!-- From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/src/main/res/values/colors.xml -->
     <color name="Black">#000</color>
     <color name="DarkGrey">#4F4F4F</color>
     <color name="Green">#0F0</color>
@@ -42,7 +60,7 @@
     <color name="black_overlay">#66000000</color>
     <color name="circulos_grandes">#60ff0000</color>
     <color name="circulos_pequenos">#f00</color>
-    <!-- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values/values.xml -->
+    <!-- From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values/values.xml -->
     <color name="common_action_bar_splitter">#d2d2d2</color>
     <color name="common_signin_btn_dark_text_default">@android:color/white</color>
     <color name="common_signin_btn_dark_text_disabled">#FFAAAAAA</color>
@@ -53,16 +71,16 @@
     <color name="common_signin_btn_light_text_disabled">#FFAAAAAA</color>
     <color name="common_signin_btn_light_text_focused">#FF737373</color>
     <color name="common_signin_btn_light_text_pressed">@android:color/white</color>
-    <!-- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/src/main/res/values/colors.xml -->
+    <!-- From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/src/main/res/values/colors.xml -->
     <color name="marcas">#f00</color>
     <color name="pitch_roll">#80ff0000</color>
     <color name="text_color">#Aff0</color>
-    <!-- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/src/main/res/values/attrs.xml -->
+    <!-- From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/src/main/res/values/attrs.xml -->
     <declare-styleable name="ButtonBarContainerTheme">
         <attr name="buttonBarStyle" format="reference" />
         <attr name="buttonBarButtonStyle" format="reference" />
     </declare-styleable>
-    <!-- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values/values.xml -->
+    <!-- From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values/values.xml -->
     <declare-styleable name="MapAttrs">
         <attr name="mapType" format="enum">
             <enum name="none" value="0" />
@@ -85,17 +103,17 @@
         <attr name="useViewLifecycle" format="boolean" />
         <attr name="zOrderOnTop" format="boolean" />
     </declare-styleable>
-    <!-- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/src/main/res/values/dimens.xml -->
+    <!-- From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/src/main/res/values/dimens.xml -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <!-- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/src/main/res/values/strings.xml -->
     <string name="OrientationTypeAccMag">accmag</string>
     <string name="OrientationTypeFusion">fusao</string>
     <string name="OrientationTypeRotationVector">rotvet</string>
     <string name="RotationVector">rotvet</string>
     <string name="action_settings">Configuração</string>
     <string name="app_name">Sistema Móvel de Telemetria para Automomóveis</string>
-    <!-- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/build/exploded-bundles/SMTAImuGpsProjectGooglePlayServices_libUnspecified.aar/res/values/values.xml -->
+    <!-- From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values/values.xml -->
     <string name="auth_client_needs_enabling_title">      An application requires Google Play Services to be enabled.</string>
     <string name="auth_client_needs_installation_title">      An application requires installation of Google Play Services.</string>
     <string name="auth_client_needs_update_title">      An application requires an update for Google Play Services.</string>
@@ -117,7 +135,7 @@
     <string name="common_google_play_services_update_title" msgid="1788179980625863495">Update Google Play services</string>
     <string name="common_signin_button_text">Sign in</string>
     <string name="common_signin_button_text_long">Sign in with Google</string>
-    <!-- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/src/main/res/values/strings.xml -->
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="este">E</string>
@@ -127,7 +145,7 @@
     <string name="title_activity_ins_calibration">Calibração do acelerómetro</string>
     <string name="title_activity_insgps">Sistema Móvel de Telemetria para Automomóveis</string>
     <string name="title_activity_settings">Configuração</string>
-    <!-- From: file:/C:/Users/pessanha/AndroidStudioProjects/SMTAImuGpsProject/SMTAImuGps/src/main/res/values/styles.xml -->
+    <!-- From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/src/main/res/values/styles.xml -->
     <style name="AppBaseTheme" parent="android:Theme.Light">
         <!--
             Theme customizations available in newer API levels can go in
