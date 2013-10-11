@@ -330,7 +330,7 @@ public class InsGpsActivity extends Activity implements GpsListener.InterfaceGps
 
     }
     public void drawMap(){
-        
+
     }
     /* ------------   Calback do GPS Change ----------------------------*/
     @Override
