@@ -198,9 +198,9 @@ public class InsClass {
         this.mVelocityTotal = this.velocityCorrection + operations.getMagnitude(new float[] {(float)this.mVelocityBody.get(1),(float)this.mVelocityBody.get(2)});
         updatePosition(dt);
     }
-    public void updatePosition(float paramFloat)
+    public void updatePosition(float dt)
     {
-        this.mPositionTotal += paramFloat * this.mVelocityTotal;
+        this.mPositionTotal += dt * this.mVelocityTotal;
     }
     /**
      * Actualiza o Azimuth, pitch e roll de acordo com o getrotationmatrix() e Acc+Mag

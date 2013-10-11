@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.location.GpsSatellite;
 import android.location.Location;
@@ -35,6 +36,8 @@ import com.google.android.gms.maps.model.*;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import mei.tcd.gps.GpsListener;
 import mei.tcd.ins.InsListener;
@@ -46,13 +49,16 @@ import mei.tcd.ins.InsOrientationView;
 public class InsGpsActivity extends Activity implements GpsListener.InterfaceGps,InsListener.InterfaceIns {
     private static final Handler mHandler = new Handler();
     private static final float RAD2GRAUS = 57.2957795f;// Valor para passar de radianos para graus
-    private static final float MSTOKM = 0.277777778f; //MSTOKM - Metros por segundo para KM/H
+    private static final float MSTOKM = 3.6f; //MSTOKM - Metros por segundo para KM/H
     private boolean gpsReady = false; // Guarda se recebeu um fix do GPS do onLocationChanged e se está pronto
     private boolean insReady = false; // Guarda ins está pronto a ser usado
     private boolean startSystemSaving;
     private boolean isCorrectlyOriented;
     // Google Maps V2
     private GoogleMap mapView;
+    private float accuracy;
+    private float bearingGps;
+    Circle circle;
     // Listeners INS e GPS
     private InsListener insListener;
     private GpsListener gpsListener;
@@ -62,8 +68,50 @@ public class InsGpsActivity extends Activity implements GpsListener.InterfaceGps
     private FrameLayout rootLayout;
     private View warningMessage;
     private LayoutInflater factory;
-    private ImageButton btn_start, btn_stop; // Botões do interface UI
+    private ImageButton btn_start, btn_stop,btn_stopGps; // Botões do interface UI
     private TextView textVelocity;
+
+    double currentAltitudeGps;
+    double currentAltitudeIns;
+    double currentLatitudeGps;
+    double currentLatitudeIns;
+    double currentLongitudeGps;
+    double currentLongitudeIns;
+
+    double previousAltitudeGps;
+    double previousAltitudeIns;
+    double previousLatitudeGps;
+    double previousLatitudeIns;
+    double previousLongitudeGps;
+    double previousLongitudeIns;
+
+    TimerTask drawMapTask;
+    TimerTask showInfoTask;
+    private float filteredVelocity;
+    private GroundOverlay groundOverlay;
+    private GroundOverlayOptions groundOverlayOptions;
+    private BitmapDescriptor image;
+    private float insPreviousPosition;
+    private KmlWriterSmta kml = new KmlWriterSmta();
+    private NumberFormat nf;
+    private Polyline p1;
+    private Polyline p2;
+    ArrayList<LatLng> pointsGps = new ArrayList();
+    ArrayList<LatLng> pointsGpsSave = new ArrayList();
+    ArrayList<LatLng> pointsIns = new ArrayList();
+    ArrayList<LatLng> pointsInsSave = new ArrayList();
+    private PolylineOptions polylineOptionsGps;
+    private PolylineOptions polylineOptionsIns;
+    private boolean prefLogKml;
+    private boolean prefMapView;
+    private SharedPreferences preferences;
+    private TextView textGpsBearing;
+    private TextView textGpsInsVelocity;
+    private TextView textGpsVelocity;
+    private TextView textInsBearing;
+    private float velocityGps;
+    private float velocityIns;
+
 
 
     @Override
@@ -122,13 +170,20 @@ public class InsGpsActivity extends Activity implements GpsListener.InterfaceGps
      */
     private void setUpMapIfNeeded() {
         // Verificar null para confirmar se já não foi instanciado o mapa.
-        if (mapView == null) {
-            // Tentar obter o mapa do SupportMapFragment.
-            if (((MapFragment) getFragmentManager().findFragmentById(R.id.mapview1)) != null) {
-                mapView = ((MapFragment) getFragmentManager().findFragmentById(R.id.mapview1))
-                        .getMap();
+        if((this.mapView==null) && ((MapFragment)getFragmentManager().findFragmentById(R.id.mapview1)!=null))
+        {
+            this.mapView = ((MapFragment)getFragmentManager().findFragmentById(R.id.mapview1)).getMap();
+            if (mapView == null) {
+                this.image = BitmapDescriptorFactory.fromResource(R.drawable.icon_map);
+                this.mapView.animateCamera(CameraUpdateFactory.zoomTo(17));
+               /* // Tentar obter o mapa do SupportMapFragment.
+                if (((MapFragment) getFragmentManager().findFragmentById(R.id.mapview1)) != null) {
+                    mapView = ((MapFragment) getFragmentManager().findFragmentById(R.id.mapview1))
+                            .getMap();
+                }*/
             }
         }
+
     }
     /**
      * Click Lisntener do botão próximo ecrã para o ViewSwitcher
@@ -225,6 +280,35 @@ public class InsGpsActivity extends Activity implements GpsListener.InterfaceGps
         final AlertDialog alert = builder.create();
         alert.show();
     }
+    private void DrawMapTask()
+    {
+        Timer localTimer = new Timer();
+        this.drawMapTask = new TimerTask(){
+            public void run(){
+                InsGpsActivity.this.drawMap();
+            }
+        };
+        localTimer.schedule(this.drawMapTask,1000,2000);
+
+    }
+    private void ShowInfoTask(){
+        Timer localTimer = new Timer();
+        this.showInfoTask = new TimerTask(){
+            public void run(){
+                InsGpsActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        InsGpsActivity.this.textGpsBearing.setText(InsGpsActivity.this.nf.format(InsGpsActivity.this.bearingGps));
+                        InsGpsActivity.this.textGpsVelocity.setText(InsGpsActivity.this.nf.format(MSTOKM*InsGpsActivity.this.velocityGps));
+                        InsGpsActivity.this.textInsBearing.setText(InsGpsActivity.this.nf.format((360.0f + RAD2GRAUS * InsGpsActivity.this.insListener.getAziPitRoll()[0])%360.0f));
+                        InsGpsActivity.this.nf.format(MSTOKM * InsGpsActivity.this.insListener.getVelocity());
+                        InsGpsActivity.this.textGpsInsVelocity.setText(InsGpsActivity.this.nf.format(MSTOKM * InsGpsActivity.this.velocityIns));
+                    }
+                });
+            }
+        };
+        localTimer.schedule(this.showInfoTask,1000,100);
+    }
     /**
      * Actualizo a view de acordo com os parametros Azimuth, Pitch e Roll passados em array
      * @param apr array Azimuth, pitch e roll
@@ -244,6 +328,9 @@ public class InsGpsActivity extends Activity implements GpsListener.InterfaceGps
             orientationView.invalidate();
         }
 
+    }
+    public void drawMap(){
+        
     }
     /* ------------   Calback do GPS Change ----------------------------*/
     @Override
@@ -329,6 +416,11 @@ public class InsGpsActivity extends Activity implements GpsListener.InterfaceGps
         });
         isCorrectlyOriented = true;
         }
+    }
+
+    @Override
+    public void onVehicleStopDetected() {
+
     }
 
     /**
