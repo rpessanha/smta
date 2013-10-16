@@ -3,6 +3,7 @@ package mei.tcd.util;
 import android.os.Environment;
 import android.util.Log;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -12,6 +13,7 @@ import java.util.Date;
  * Created by pessanha on 03-08-2013.
  */
 public class SensorWriterSmta {
+    private BufferedWriter bufferedWriter;
     // Representa caminhos, existentes ou não
     public File file;
     // Instancia classe FileWriter para escrever ficheiro
@@ -49,6 +51,7 @@ public class SensorWriterSmta {
         file = new File(Environment.getExternalStorageDirectory() + "/"+dir+"/" + "/"+subDir+"/" + nome+fileName + ".csv");
         try {
             fileWriter = new FileWriter(file);
+            this.bufferedWriter = new BufferedWriter(this.fileWriter);
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -70,7 +73,8 @@ public class SensorWriterSmta {
 
                 file.createNewFile();
             }
-            fileWriter.write(dados);
+            //fileWriter.write(dados);
+            this.bufferedWriter.write(dados);
         } catch (IOException e) {
             e.printStackTrace();
             Log.v("SMTA writeThis Error: ", e.getStackTrace().toString());
@@ -84,7 +88,9 @@ public class SensorWriterSmta {
     public void closeFile()
     {
         try {
-             fileWriter.close();
+            this.bufferedWriter.flush();
+            this.bufferedWriter.close();
+            // fileWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
             Log.v("SMTA closeFile Error: ", e.getStackTrace().toString());

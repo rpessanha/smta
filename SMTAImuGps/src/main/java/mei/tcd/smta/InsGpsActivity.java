@@ -42,6 +42,7 @@ import java.util.TimerTask;
 import mei.tcd.gps.GpsListener;
 import mei.tcd.ins.InsListener;
 import mei.tcd.ins.InsOrientationView;
+import mei.tcd.util.KmlWriterSmta;
 
 /**
  * Created by pessanha on 07-08-2013.
@@ -91,6 +92,7 @@ public class InsGpsActivity extends Activity implements GpsListener.InterfaceGps
     private GroundOverlay groundOverlay;
     private GroundOverlayOptions groundOverlayOptions;
     private BitmapDescriptor image;
+    private float insCurrentPosition;
     private float insPreviousPosition;
     private KmlWriterSmta kml = new KmlWriterSmta();
     private NumberFormat nf;
