@@ -270,22 +270,26 @@ containing a value of this type.
     }
     public static final class id {
         public static final int CompassKmView=0x7f070015;
-        public static final int action_settings=0x7f070020;
-        public static final int btncalibrar=0x7f07001b;
+        public static final int action_settings=0x7f070023;
+        public static final int btncalibrar=0x7f07001e;
         public static final int btncalibrate=0x7f07000b;
-        public static final int btnconfig=0x7f07001c;
+        public static final int btnconfig=0x7f07001f;
         public static final int btncontinue=0x7f070009;
         public static final int btnexit=0x7f070008;
         public static final int btngpsinsnext=0x7f070013;
-        public static final int btngpsinsnext2=0x7f070019;
-        public static final int btngpsinsprevious=0x7f070018;
+        public static final int btngpsinsprevious=0x7f07001b;
         public static final int btngpsinsstart=0x7f070011;
         public static final int btngpsinsstop=0x7f070012;
-        public static final int btnstart=0x7f07001d;
+        public static final int btngpsstopgps=0x7f07001c;
+        public static final int btnstart=0x7f070020;
         public static final int calibrationText=0x7f070006;
+        public static final int gpsbearing=0x7f070017;
+        public static final int gpsinsvelocidade=0x7f07001a;
+        public static final int gpsvelocidade=0x7f070019;
         public static final int hybrid=0x7f070004;
         public static final int imageButton=0x7f07000a;
-        public static final int imageView=0x7f07001a;
+        public static final int imageView=0x7f07001d;
+        public static final int insbearing=0x7f070018;
         public static final int layoutCompassKm=0x7f070014;
         public static final int layoutMapa=0x7f07000e;
         public static final int mainInsGps=0x7f07000c;
@@ -295,19 +299,20 @@ containing a value of this type.
         public static final int none=0x7f070000;
         public static final int normal=0x7f070001;
         public static final int orientacaoView=0x7f070016;
-        public static final int panel_import=0x7f07001e;
+        public static final int panel_import=0x7f070021;
         public static final int pbcount=0x7f070005;
         public static final int satellite=0x7f070002;
         public static final int terrain=0x7f070003;
-        public static final int velocidade=0x7f070017;
         public static final int viewSwitcher1=0x7f07000d;
-        public static final int warning_android_pitch=0x7f07001f;
+        public static final int warning_android_pitch=0x7f070022;
     }
     public static final class layout {
         public static final int act_ins_calibration=0x7f030000;
         public static final int act_insgps=0x7f030001;
-        public static final int main=0x7f030002;
-        public static final int warning_not_oriented=0x7f030003;
+        public static final int act_insgps_vs1=0x7f030002;
+        public static final int act_insgps_vs2=0x7f030003;
+        public static final int main=0x7f030004;
+        public static final int warning_not_oriented=0x7f030005;
     }
     public static final class menu {
         public static final int main=0x7f0b0000;

@@ -1,33 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="horizontal"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
-    <RelativeLayout
-            android:id="@+id/panel_import"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-
-            android:background="@color/Black"
-            android:alpha="0.8">
-
-        <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/warning_android_pitch"
-                android:layout_gravity="center"
-                android:adjustViewBounds="false"
-                android:src="@drawable/warning_android_pitch"
-                android:scaleType="matrix"
-                android:layout_alignParentEnd="false"
-                android:layout_alignParentStart="false"
-                android:layout_alignWithParentIfMissing="false"
-                android:layout_alignParentRight="false"
-                android:layout_alignParentBottom="false"
-                android:layout_centerInParent="true"/>
-
-
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@+id/panel_import" android:background="@color/Black" android:layout_width="fill_parent" android:layout_height="fill_parent" android:alpha="0.8">
+        <ImageView android:layout_gravity="center" android:id="@+id/warning_android_pitch" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/warning_android_pitch" android:scaleType="matrix" android:adjustViewBounds="false" android:layout_alignParentRight="false" android:layout_alignParentBottom="false" android:layout_centerInParent="true" android:layout_alignWithParentIfMissing="false" android:layout_alignParentStart="false" android:layout_alignParentEnd="false" />
     </RelativeLayout>
-
 </LinearLayout><!-- From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/src/main/res/layout/warning_not_oriented.xml -->

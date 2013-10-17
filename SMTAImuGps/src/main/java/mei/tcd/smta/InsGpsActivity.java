@@ -13,6 +13,7 @@ import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.text.Layout;
 import android.view.LayoutInflater;
@@ -43,6 +44,7 @@ import mei.tcd.gps.GpsListener;
 import mei.tcd.ins.InsListener;
 import mei.tcd.ins.InsOrientationView;
 import mei.tcd.util.KmlWriterSmta;
+import mei.tcd.util.Wsg84;
 
 /**
  * Created by pessanha on 07-08-2013.
@@ -119,7 +121,16 @@ public class InsGpsActivity extends Activity implements GpsListener.InterfaceGps
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-       // getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        try {
+            MapsInitializer.initialize(getApplicationContext());
+        } catch (GooglePlayServicesNotAvailableException e) {
+            e.printStackTrace();
+        }
+        int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext());
+        if(status != ConnectionResult.SUCCESS) {
+            GooglePlayServicesUtil.getErrorDialog(status,this,1122).show();
+        }
+        // getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setContentView(R.layout.act_insgps);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setUpMapIfNeeded(); // Verifica se o mapa está instanciado. Se não estiver, então instancia.
@@ -132,12 +143,23 @@ public class InsGpsActivity extends Activity implements GpsListener.InterfaceGps
         // Get root Element da view lifaga á minha atividade sem conhecer o seu nome, tipo ou ID
         rootLayout = (FrameLayout )findViewById(android.R.id.content); // instancio a minha layout. Podia instanciar directamente a LinerLayout e alterar o android.R.id.content para R.id.idLayout
         factory = LayoutInflater.from(this); // Obter o layoutInflater do contexto
-        warningMessage = factory.inflate(R.layout.warning_not_oriented, null,false); // a view a carregar (inflate=render)
+        warningMessage = factory.inflate(R.layout.warning_not_oriented, null, false); // a view a carregar (inflate=render)
         this.isCorrectlyOriented = true; // Controla se está orientado ou não
         startSystemSaving = false; // Variavel que alerta o inicio da gravação
         btn_start = (ImageButton)findViewById(R.id.btngpsinsstart);
         btn_stop = (ImageButton)findViewById(R.id.btngpsinsstop);
-        textVelocity = (TextView)findViewById(R.id.velocidade);
+        btn_stopGps = (ImageButton)findViewById(R.drawable.btngpsinsstopgps);
+        textGpsInsVelocity = (TextView)findViewById(R.id.gpsinsvelocidade);
+        textGpsBearing = (TextView)findViewById(R.id.gpsbearing);
+        textGpsVelocity = (TextView)findViewById(R.id.gpsvelocidade);
+        textInsBearing = (TextView)findViewById(R.id.insbearing);
+        this.nf = NumberFormat.getInstance();
+        this.nf.setMinimumFractionDigits(0);
+        this.nf.setMaximumFractionDigits(1);
+        this.preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        this.prefLogKml = this.preferences.getBoolean("logkml",false);
+        this.prefMapView = this.preferences.getBoolean("usaMapView",false);
+
     }
 
     /**
@@ -147,6 +169,8 @@ public class InsGpsActivity extends Activity implements GpsListener.InterfaceGps
     protected void onResume() {
         super.onResume();
         startSystemSaving = false;
+        this.insReady = false;
+        this.gpsReady = false;
         SystemCheck();
 
     }
@@ -159,6 +183,11 @@ public class InsGpsActivity extends Activity implements GpsListener.InterfaceGps
     {
         super.onPause();
         startSystemSaving = false;
+        if(this.prefMapView)
+            this.drawMapTask.cancel();
+        if(showInfoTask !=null)
+            this.showInfoTask.cancel();
+
        if(gpsListener!=null) // verifica se já não está no GC
             gpsListener.stopGps();
        //     gpsListener=null; // Pronto para GC
@@ -215,6 +244,8 @@ public class InsGpsActivity extends Activity implements GpsListener.InterfaceGps
         String subDirName = android.text.format.DateFormat.format("yyyy_MM_dd_hh_mm_ss", data).toString();
         gpsListener.start(subDirName); // Inicia a gravação
         insListener.start(subDirName); // Inicia a gravação
+        if(this.prefLogKml)
+            this.kml.createFile(subDirName,"smta_isep","gps",data);
         startSystemSaving = true;
         btn_start.setVisibility(ImageButton.GONE);
         btn_stop.setVisibility(ImageButton.VISIBLE);
@@ -230,6 +261,8 @@ public class InsGpsActivity extends Activity implements GpsListener.InterfaceGps
         startSystemSaving = false;
         gpsListener.stop(); // Inicia a gravação
         insListener.stop(); // Inicia a gravação
+        if(this.prefLogKml)
+            this.kml.closeFile_lg(this.pointsGpsSave,this.pointsInsSave);
         btn_start.setVisibility(ImageButton.VISIBLE);
         btn_stop.setVisibility(ImageButton.GONE);
     }
@@ -335,7 +368,7 @@ public class InsGpsActivity extends Activity implements GpsListener.InterfaceGps
         runOnUiThread(new Runnable() {
             @Override
             public synchronized void  run() {
-                if((InsGpsActivity.this.polylineOptionsGps != null) && (InsGpsActivity.this.pointsGps.size() % 600 !=0))
+                if((InsGpsActivity.this.polylineOptionsGps == null) && (InsGpsActivity.this.pointsGps.size() % 600 ==0))
                     polylineOptionsGps = new PolylineOptions()
                             .addAll(InsGpsActivity.this.pointsGps)
                             .width(5.0f)
@@ -344,10 +377,15 @@ public class InsGpsActivity extends Activity implements GpsListener.InterfaceGps
                 if(InsGpsActivity.this.p1 != null)
                     InsGpsActivity.this.p1.remove();
 
+                if((InsGpsActivity.this.gpsListener.isGpsEnabled()) && (InsGpsActivity.this.gpsListener.isGpsStarted())){
+                    InsGpsActivity.this.p1.setPoints(InsGpsActivity.this.pointsGps);
+
+                }
                 InsGpsActivity.this.p1 = mapView.addPolyline(InsGpsActivity.this.polylineOptionsGps);
+
                 InsGpsActivity.this.pointsGps.clear();
                 //---------------------------------------------
-                if((InsGpsActivity.this.polylineOptionsIns != null) && (InsGpsActivity.this.pointsIns.size() % 600 !=0))
+                if((InsGpsActivity.this.polylineOptionsIns == null) && (InsGpsActivity.this.pointsIns.size() % 600 ==0))
                     polylineOptionsIns = new PolylineOptions()
                             .addAll(InsGpsActivity.this.pointsIns)
                             .width(5.0f)
@@ -355,13 +393,20 @@ public class InsGpsActivity extends Activity implements GpsListener.InterfaceGps
                             .zIndex(2.0f);
                 if(InsGpsActivity.this.p2 != null)
                     InsGpsActivity.this.p2.remove();
-
+                InsGpsActivity.this.p2.setPoints(InsGpsActivity.this.pointsIns);
                 InsGpsActivity.this.p2 = mapView.addPolyline(InsGpsActivity.this.polylineOptionsIns);
                 InsGpsActivity.this.pointsIns.clear();
-
+                //----------------------------------------------
                 if (InsGpsActivity.this.groundOverlayOptions == null)
                     InsGpsActivity.this.initializeGroundOverlayOptions();
-                
+                InsGpsActivity.this.groundOverlay.setBearing((360.0f + 57.29578f * InsGpsActivity.this.insListener.getAziPitRoll()[0]) % 360.0f);
+
+
+                if(!InsGpsActivity.this.gpsListener.isGpsStarted() || !InsGpsActivity.this.gpsListener.isGpsEnabled()){
+                    InsGpsActivity.this.mapView.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(InsGpsActivity.this.currentLatitudeGps,InsGpsActivity.this.currentLongitudeGps),17.0f));
+                }
+                InsGpsActivity.this.mapView.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(InsGpsActivity.this.currentLatitudeIns,InsGpsActivity.this.currentLongitudeIns),17.0f));
+
 
             }
         });
@@ -371,7 +416,7 @@ public class InsGpsActivity extends Activity implements GpsListener.InterfaceGps
         if((this.gpsListener.isGpsEnabled()) && (this.gpsListener.isGpsStarted())){
             this.groundOverlayOptions = new GroundOverlayOptions()
                     .image(this.image).transparency(0.5f)
-                    .position(new LatLng(this.currentLatitudeGps,this.currentLongitudeGps),30.0f)
+                    .position(new LatLng(this.currentLatitudeGps, this.currentLongitudeGps), 30.0f)
                     .bearing((360.0f + 57.29578f * this.insListener.getAziPitRoll()[0] % 360.0f));
 
         }
@@ -381,6 +426,26 @@ public class InsGpsActivity extends Activity implements GpsListener.InterfaceGps
     public void onLocationChanged(Location location) {
         if(!this.gpsReady)
             this.gpsReady = true; // Coloca campo da classe HasFix=true para SystemCheck Dialogprogress tester
+        if(this.previousLatitudeGps != 0.0d){
+            this.previousLatitudeGps = this.currentLatitudeGps;
+            this.previousLongitudeGps = this.currentLongitudeGps;
+            this.previousAltitudeGps = this.currentAltitudeGps;
+        }
+        this.currentLatitudeGps = location.getLatitude();
+        this.currentLongitudeGps = location.getLongitude();
+        this.currentAltitudeGps = location.getAltitude();
+        if(this.previousLatitudeGps !=0){
+            this.pointsGps.add(new LatLng(this.previousLatitudeGps,this.previousLongitudeGps));
+            if((this.prefLogKml) && (this.startSystemSaving))
+                this.pointsGpsSave.add(new LatLng(this.previousLatitudeGps,this.previousLongitudeGps));
+        }
+        this.pointsGps.add(new LatLng(this.currentLatitudeGps,this.currentLongitudeGps));
+        if((this.prefLogKml) && (this.startSystemSaving))
+            this.pointsGpsSave.add(new LatLng(this.currentLatitudeGps,this.currentLongitudeGps));
+        this.accuracy = location.getAccuracy();
+        this.velocityGps = location.getSpeed();
+        this.bearingGps = location.getBearing();
+        this.insListener.setVelocidadeFromFilteredGps((Float)this.velocityGps);
     }
 
     @Override
@@ -411,16 +476,30 @@ public class InsGpsActivity extends Activity implements GpsListener.InterfaceGps
 
     @Override
     public void onVelocityChange() {
-        runOnUiThread(new Runnable() { // Para correr na UI visto que os sensores estão a correr numa threadHandler
-            public void run() {
+                this.velocityIns = this.insListener.getVelocity();
+        this.insCurrentPosition = this.insListener.getPosition();
+        if(Wsg84.getLastDistance(this.insPreviousPosition,this.insCurrentPosition)>0.0d)
+        {
+            double[] arrayOfDouble = Wsg84.FindPointAtDistanceFrom(this.currentLatitudeIns,this.currentLongitudeIns,this.insListener.getAziPitRoll()[0],Wsg84.getLastDistance(this.insPreviousPosition,this.insCurrentPosition));
+            this.previousLatitudeIns = this.currentLatitudeIns;
+            this.previousLongitudeIns = this.currentLongitudeIns;
+            this.currentLatitudeIns = Math.toDegrees(arrayOfDouble[0]);
+            this.currentLongitudeIns = Math.toDegrees(arrayOfDouble[1]);
+            this.pointsIns.add(new LatLng(this.previousLatitudeIns,this.previousLongitudeIns));
+            this.pointsIns.add(new LatLng(this.currentLatitudeIns,this.currentLongitudeIns));
+            if((this.prefLogKml) && (this.startSystemSaving)){
+                this.pointsInsSave.add(new LatLng(this.previousLatitudeIns,this.previousLongitudeIns));
+                this.pointsInsSave.add(new LatLng(this.currentLatitudeIns,this.currentLongitudeIns));
+            }
+            this.insPreviousPosition = this.insCurrentPosition;
+        }
                 NumberFormat nf = NumberFormat.getInstance();
                 nf.setMinimumFractionDigits(2);
                 nf.setMaximumFractionDigits(2);
                 String output = nf.format(insListener.getVelocity()*MSTOKM);
                 textVelocity.setText(output + " K/h");
                 //textVelocity.setText(Float.toString(insListener.getVelocity()*MSTOKM));
-            }
-        });
+
     }
 
     @Override
@@ -461,10 +540,31 @@ public class InsGpsActivity extends Activity implements GpsListener.InterfaceGps
         isCorrectlyOriented = true;
         }
     }
+    public void onBtnStopGpsClick()
+    {
+        if(this.gpsReady){
+            this.gpsListener.stopGps();
+            this.gpsReady = false;
+            this.btn_stopGps.setImageResource(2130837534);
+            Toast.makeText(getApplicationContext(),"Gps Desligado!",1).show();
+        }else
+        {
+            this.gpsListener.startGps();
+            this.gpsReady = true;
+            this.btn_stopGps.setImageResource(2130837536);
+            Toast.makeText(getApplicationContext(),"Gps Ligado!",1).show();
+        }
+    }
 
     @Override
     public void onVehicleStopDetected() {
-
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                // Falta qualquer coisa
+                InsGpsActivity.this.textGpsInsVelocity.setText(InsGpsActivity.this.nf.format(3.6f * InsGpsActivity.this.velocityIns));
+            }
+        });
     }
 
     /**
