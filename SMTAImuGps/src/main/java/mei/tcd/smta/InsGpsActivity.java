@@ -332,7 +332,49 @@ public class InsGpsActivity extends Activity implements GpsListener.InterfaceGps
 
     }
     public void drawMap(){
+        runOnUiThread(new Runnable() {
+            @Override
+            public synchronized void  run() {
+                if((InsGpsActivity.this.polylineOptionsGps != null) && (InsGpsActivity.this.pointsGps.size() % 600 !=0))
+                    polylineOptionsGps = new PolylineOptions()
+                            .addAll(InsGpsActivity.this.pointsGps)
+                            .width(5.0f)
+                            .color(-16776961)
+                            .zIndex(2.0f);
+                if(InsGpsActivity.this.p1 != null)
+                    InsGpsActivity.this.p1.remove();
 
+                InsGpsActivity.this.p1 = mapView.addPolyline(InsGpsActivity.this.polylineOptionsGps);
+                InsGpsActivity.this.pointsGps.clear();
+                //---------------------------------------------
+                if((InsGpsActivity.this.polylineOptionsIns != null) && (InsGpsActivity.this.pointsIns.size() % 600 !=0))
+                    polylineOptionsIns = new PolylineOptions()
+                            .addAll(InsGpsActivity.this.pointsIns)
+                            .width(5.0f)
+                            .color(-65536)
+                            .zIndex(2.0f);
+                if(InsGpsActivity.this.p2 != null)
+                    InsGpsActivity.this.p2.remove();
+
+                InsGpsActivity.this.p2 = mapView.addPolyline(InsGpsActivity.this.polylineOptionsIns);
+                InsGpsActivity.this.pointsIns.clear();
+
+                if (InsGpsActivity.this.groundOverlayOptions == null)
+                    InsGpsActivity.this.initializeGroundOverlayOptions();
+                
+
+            }
+        });
+    }
+    public void initializeGroundOverlayOptions()
+    {
+        if((this.gpsListener.isGpsEnabled()) && (this.gpsListener.isGpsStarted())){
+            this.groundOverlayOptions = new GroundOverlayOptions()
+                    .image(this.image).transparency(0.5f)
+                    .position(new LatLng(this.currentLatitudeGps,this.currentLongitudeGps),30.0f)
+                    .bearing((360.0f + 57.29578f * this.insListener.getAziPitRoll()[0] % 360.0f));
+
+        }
     }
     /* ------------   Calback do GPS Change ----------------------------*/
     @Override
