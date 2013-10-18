@@ -435,6 +435,7 @@ public class InsListener implements SensorEventListener {
         prefSensorFrequency = Integer.parseInt(preferences.getString("sensorfrequency", "0")); // Velocidade do sensor (Fastest=0, Game=1, Normal=2, UI=3)
         prefOrientationType = preferences.getString("orientationtype", "fusao"); // Qual o tipo de orientação (accmag, rotvet, fusao)
         prefNoiseFilter = preferences.getString("filtroRuido", "lpf"); // Qual o filtro para atenuar o ruído (lpf=Low Pass, mv=mediamovel)
+        prefGravityFilter = this.preferences.getString("gravityFilter","fglpf");
         prefGravityAlpha = Float.parseFloat(preferences.getString("thresholdGravityLPF", "0.999f")); // Filtro alpha para determinação da gravidade em movimento
         prefLpfAlpha = Float.parseFloat(preferences.getString("thresholdLPF", "0.4f")); // Valor de alpha para filtro de ru?do aceleração
         prefSizeSma = Integer.parseInt(preferences.getString("thresholdSMA", "5")); // N?mero de registos para SMA filtro de ruído aceleração
@@ -461,6 +462,7 @@ public class InsListener implements SensorEventListener {
         lowPassFilter = new LowPassFilter(prefLpfAlpha);
         gravityLowPassFilter = new LowPassFilter(prefGravityAlpha);
         lowPassFilterForGravity = new LowPassFilter(0.1f);
+        magnetometerLowPassFilter = new LowPassFilter(0.4f);
         // Se usa calibração, então carrego o vetor calibração dos valores calibrados
         if (prefUsesCalibration && preferences.contains("k_X")) {
             mCalibVetor_scale[0] = preferences.getFloat("k_X", 1.0f);
