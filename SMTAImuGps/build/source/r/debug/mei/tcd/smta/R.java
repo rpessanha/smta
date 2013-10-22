@@ -160,27 +160,26 @@ containing a value of this type.
         public static final int TransparentGrey=0x7f060004;
         public static final int White=0x7f060005;
         public static final int black_overlay=0x7f060006;
-        public static final int circulos_grandes=0x7f060007;
-        public static final int circulos_pequenos=0x7f060008;
-        /**  From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/build/exploded-bundles/SmtaGooglePlayServices_libUnspecified.aar/res/values/values.xml 
-         */
-        public static final int common_action_bar_splitter=0x7f060009;
-        public static final int common_signin_btn_dark_text_default=0x7f06000a;
-        public static final int common_signin_btn_dark_text_disabled=0x7f06000b;
-        public static final int common_signin_btn_dark_text_focused=0x7f06000c;
-        public static final int common_signin_btn_dark_text_pressed=0x7f06000d;
-        public static final int common_signin_btn_default_background=0x7f06000e;
-        public static final int common_signin_btn_light_text_default=0x7f06000f;
-        public static final int common_signin_btn_light_text_disabled=0x7f060010;
-        public static final int common_signin_btn_light_text_focused=0x7f060011;
-        public static final int common_signin_btn_light_text_pressed=0x7f060012;
-        public static final int common_signin_btn_text_dark=0x7f060016;
-        public static final int common_signin_btn_text_light=0x7f060017;
-        /**  From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/src/main/res/values/colors.xml 
-         */
-        public static final int marcas=0x7f060013;
-        public static final int pitch_roll=0x7f060014;
-        public static final int text_color=0x7f060015;
+        public static final int circuloouttransparente=0x7f060007;
+        public static final int circulos_grandes=0x7f060008;
+        public static final int circulos_pequenos=0x7f060009;
+        public static final int color_gps=0x7f06000a;
+        public static final int color_ins=0x7f06000b;
+        public static final int common_action_bar_splitter=0x7f06000c;
+        public static final int common_signin_btn_dark_text_default=0x7f06000d;
+        public static final int common_signin_btn_dark_text_disabled=0x7f06000e;
+        public static final int common_signin_btn_dark_text_focused=0x7f06000f;
+        public static final int common_signin_btn_dark_text_pressed=0x7f060010;
+        public static final int common_signin_btn_default_background=0x7f060011;
+        public static final int common_signin_btn_light_text_default=0x7f060012;
+        public static final int common_signin_btn_light_text_disabled=0x7f060013;
+        public static final int common_signin_btn_light_text_focused=0x7f060014;
+        public static final int common_signin_btn_light_text_pressed=0x7f060015;
+        public static final int common_signin_btn_text_dark=0x7f060019;
+        public static final int common_signin_btn_text_light=0x7f06001a;
+        public static final int marcas=0x7f060016;
+        public static final int pitch_roll=0x7f060017;
+        public static final int text_color=0x7f060018;
     }
     public static final class dimen {
         /**  From: file:/C:/Users/pessanha/Android%20studioProjects/smta/SMTAImuGps/src/main/res/values/dimens.xml 

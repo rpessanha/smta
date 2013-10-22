@@ -24,18 +24,18 @@ public final class R {
 		public static final int zOrderOnTop = 0x7f01000f;
 	}
 	public static final class color {
-		public static final int common_action_bar_splitter = 0x7f060009;
-		public static final int common_signin_btn_dark_text_default = 0x7f06000a;
-		public static final int common_signin_btn_dark_text_disabled = 0x7f06000b;
-		public static final int common_signin_btn_dark_text_focused = 0x7f06000c;
-		public static final int common_signin_btn_dark_text_pressed = 0x7f06000d;
-		public static final int common_signin_btn_default_background = 0x7f06000e;
-		public static final int common_signin_btn_light_text_default = 0x7f06000f;
-		public static final int common_signin_btn_light_text_disabled = 0x7f060010;
-		public static final int common_signin_btn_light_text_focused = 0x7f060011;
-		public static final int common_signin_btn_light_text_pressed = 0x7f060012;
-		public static final int common_signin_btn_text_dark = 0x7f060016;
-		public static final int common_signin_btn_text_light = 0x7f060017;
+		public static final int common_action_bar_splitter = 0x7f06000c;
+		public static final int common_signin_btn_dark_text_default = 0x7f06000d;
+		public static final int common_signin_btn_dark_text_disabled = 0x7f06000e;
+		public static final int common_signin_btn_dark_text_focused = 0x7f06000f;
+		public static final int common_signin_btn_dark_text_pressed = 0x7f060010;
+		public static final int common_signin_btn_default_background = 0x7f060011;
+		public static final int common_signin_btn_light_text_default = 0x7f060012;
+		public static final int common_signin_btn_light_text_disabled = 0x7f060013;
+		public static final int common_signin_btn_light_text_focused = 0x7f060014;
+		public static final int common_signin_btn_light_text_pressed = 0x7f060015;
+		public static final int common_signin_btn_text_dark = 0x7f060019;
+		public static final int common_signin_btn_text_light = 0x7f06001a;
 	}
 	public static final class drawable {
 		public static final int common_signin_btn_icon_dark = 0x7f020022;

@@ -200,16 +200,16 @@ public class InsListener implements SensorEventListener {
     public void setVelocity(float[] filteredAccData,float[] gravityData, float dt)
     {
         if((this.prefUsesVelocityThreshold) && ((this.operations.getMagnitude(filteredAccData) < this.highLimitThresholdAcc) || (this.operations.getMagnitude(filteredAccData)>this.lowLimitThresholdAcc)))
-            this.countRecordsForThreshold += countRecordsForThreshold;
+            countRecordsForThreshold ++;
 
 
-        if((this.prefUsesVelocityThreshold) || ((this.operations.getMagnitude(filteredAccData) > this.highLimitThresholdAcc + this.prefThresholdLimit) || this.operations.getMagnitude(filteredAccData)<this.lowLimitThresholdAcc-this.prefThresholdLimit))
+        if((!this.prefUsesVelocityThreshold) || ((this.operations.getMagnitude(filteredAccData) > this.highLimitThresholdAcc + this.prefThresholdLimit) || this.operations.getMagnitude(filteredAccData)<this.lowLimitThresholdAcc-this.prefThresholdLimit))
         {
-            this.countRecordsForThreshold=0;
-            this.gravityCalibrated = false;
-            this.hasGravityCalibrated = true;
-            this.gravityThresholdCount = 0;
-            this.ins.updateVelocity(filteredAccData,gravityData,dt,this.prefUsaCentripeta);
+            countRecordsForThreshold=0;
+            gravityCalibrated = false;
+            hasGravityCalibrated = true;
+            gravityThresholdCount = 0;
+            ins.updateVelocity(filteredAccData,gravityData,dt,this.prefUsaCentripeta);
             mHandler.post(new Runnable() {
 
                 public void run() {
@@ -221,14 +221,14 @@ public class InsListener implements SensorEventListener {
         {
             if(!this.gravityCalibrated)
             {
-                this.avgAccThreshold[0] = 0.0f;
-                this.avgAccThreshold[1] = 0.0f;
-                this.avgAccThreshold[2] = 0.0f;
-                this.hasGravityCalibrated = false;
+                avgAccThreshold[0] = 0.0f;
+                avgAccThreshold[1] = 0.0f;
+                avgAccThreshold[2] = 0.0f;
+                hasGravityCalibrated = false;
             }
-            this.countRecordsForThreshold=0;
-            this.ins.setInitialVelocityFromFilteredGps(0.0f);
-            this.iIns.onVehicleStopDetected();
+            countRecordsForThreshold=0;
+            ins.setInitialVelocityFromFilteredGps(0.0f);
+            iIns.onVehicleStopDetected();
         }
 
         //iIns.onOrientationChange(); //Se já tiver o Azimuth, o pitch e rool então envio informação pelo callback
@@ -238,11 +238,11 @@ public class InsListener implements SensorEventListener {
      */
     public void setVelocityRotation(float[] filteredAccData, float dt)
     {
-        if((this.prefUsesVelocityThreshold) && ((this.operations.getMagnitude(filteredAccData) < this.highLimitThresholdAcc) || (this.operations.getMagnitude(filteredAccData)>this.lowLimitThresholdAcc)))
-            this.countRecordsForThreshold += countRecordsForThreshold;
+        if((prefUsesVelocityThreshold) && ((operations.getMagnitude(filteredAccData) < highLimitThresholdAcc) || (operations.getMagnitude(filteredAccData)>lowLimitThresholdAcc)))
+            countRecordsForThreshold ++;
 
 
-        if((this.prefUsesVelocityThreshold) || ((this.operations.getMagnitude(filteredAccData) > this.highLimitThresholdAcc + this.prefThresholdLimit) || this.operations.getMagnitude(filteredAccData)<this.lowLimitThresholdAcc-this.prefThresholdLimit))
+        if((!prefUsesVelocityThreshold) || ((operations.getMagnitude(filteredAccData) > highLimitThresholdAcc + prefThresholdLimit) || operations.getMagnitude(filteredAccData)<this.lowLimitThresholdAcc-this.prefThresholdLimit))
         {
             this.countRecordsForThreshold=0;
             this.gravityCalibrated = false;

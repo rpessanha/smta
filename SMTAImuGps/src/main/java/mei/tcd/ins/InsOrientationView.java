@@ -19,6 +19,7 @@ public class InsOrientationView  extends View {
     private Paint marcasPaint;
     private Paint textPaint;
     private Paint circuloForaPaint;
+    private Paint circuloOutPaint;
     private Paint circuloDentroPaint;
     private Paint pitchRollPaint;
 
@@ -87,14 +88,19 @@ public class InsOrientationView  extends View {
         oString = r.getString(R.string.oeste);
 
         // paints para os circulos
+        circuloOutPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        circuloOutPaint.setColor(r.getColor(R.color.circuloouttransparente));
+        circuloOutPaint.setStrokeWidth(6);
+        circuloOutPaint.setStyle(Paint.Style.STROKE);
+        // paints para os circulos
         circuloForaPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        circuloForaPaint.setColor(r.getColor(R.color.circulos_grandes));
-        circuloForaPaint.setStrokeWidth(3);
+        circuloForaPaint.setColor(r.getColor(R.color.circulos_pequenos));
+        circuloForaPaint.setStrokeWidth(6);
         circuloForaPaint.setStyle(Paint.Style.STROKE);
 
         circuloDentroPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         circuloDentroPaint.setColor(r.getColor(R.color.circulos_pequenos));
-        circuloDentroPaint.setStrokeWidth(1);
+        circuloDentroPaint.setStrokeWidth(5);
         circuloDentroPaint.setStyle(Paint.Style.STROKE);
 
         pitchRollPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -108,7 +114,7 @@ public class InsOrientationView  extends View {
 
         textPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         textPaint.setColor(r.getColor(R.color.text_color));
-        textPaint.setTextSize(13);
+        textPaint.setTextSize(25);
         textHeight = (int)textPaint.measureText("yY");// inteiro
 
     }
@@ -144,9 +150,12 @@ public class InsOrientationView  extends View {
         int px = getMeasuredWidth() / 2;
         int py = getMeasuredHeight() / 2;
 
-        int radius = Math.min(px, py);
+
+        int radius = Math.min(px-6, py-6);
+        int radiusOut = Math.min(px, py);
 
         canvas.drawCircle(px, py, radius, circuloForaPaint);
+        canvas.drawCircle(px, py, radius, circuloOutPaint);
         // antes de rodar fazer save para mais tarde efectuat o restore e assim poder desenhar po cima
         canvas.save();
         //- azimuth para rodar no sentido correcto
